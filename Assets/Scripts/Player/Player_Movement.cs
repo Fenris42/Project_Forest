@@ -33,16 +33,22 @@ public class Player_Movement : MonoBehaviour
 
         //separated to 2 if statements to prevent diagonal movement
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
-        {
+        { 
             if (Input.GetKey(KeyCode.W))
             {//move up
-                animator.SetTrigger("idle_back");
+                animator.SetBool("walk_back", true);
+                animator.SetBool("walk_front", false);
+                animator.SetBool("walk_left", false);
+                animator.SetBool("walk_right", false);
                 transform.position += (Vector3.up * moveSpeed) * Time.deltaTime;
 
             }
             if (Input.GetKey(KeyCode.S))
             {//move down
-                animator.SetTrigger("idle_front");
+                animator.SetBool("walk_front", true);
+                animator.SetBool("walk_back", false);
+                animator.SetBool("walk_left", false);
+                animator.SetBool("walk_right", false);
                 transform.position += (Vector3.down * moveSpeed) * Time.deltaTime;
 
             }
@@ -51,16 +57,29 @@ public class Player_Movement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.A))
             {//move left
-                animator.SetTrigger("idle_left");
+                animator.SetBool("walk_left", true);
+                animator.SetBool("walk_back", false);
+                animator.SetBool("walk_front", false);
+                animator.SetBool("walk_right", false);
                 transform.position += (Vector3.left * moveSpeed) * Time.deltaTime;
 
             }
             if (Input.GetKey(KeyCode.D))
             {//move right
-                animator.SetTrigger("idle_right");
+                animator.SetBool("walk_right", true);
+                animator.SetBool("walk_back", false);
+                animator.SetBool("walk_front", false);
+                animator.SetBool("walk_left", false);
                 transform.position += (Vector3.right * moveSpeed) * Time.deltaTime;
 
             }
+        }
+        else
+        {//reset animators
+            animator.SetBool("walk_back", false);
+            animator.SetBool("walk_front", false);
+            animator.SetBool("walk_left", false);
+            animator.SetBool("walk_right", false);
         }
     }
 }
