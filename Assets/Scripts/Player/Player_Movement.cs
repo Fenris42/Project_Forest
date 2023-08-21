@@ -31,30 +31,36 @@ public class Player_Movement : MonoBehaviour
     private void Movement()
     {//move character per players input
 
-        if (Input.GetKey(KeyCode.W))
-        {//move up
-            animator.SetTrigger("idle_back");
-            transform.position += (Vector3.up * moveSpeed) * Time.deltaTime;
+        //separated to 2 if statements to prevent diagonal movement
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+        {
+            if (Input.GetKey(KeyCode.W))
+            {//move up
+                animator.SetTrigger("idle_back");
+                transform.position += (Vector3.up * moveSpeed) * Time.deltaTime;
 
+            }
+            if (Input.GetKey(KeyCode.S))
+            {//move down
+                animator.SetTrigger("idle_front");
+                transform.position += (Vector3.down * moveSpeed) * Time.deltaTime;
+
+            }
         }
-        if (Input.GetKey(KeyCode.A))
-        {//move left
-            animator.SetTrigger("idle_left");
-            transform.position += (Vector3.left * moveSpeed) * Time.deltaTime;
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+        {
+            if (Input.GetKey(KeyCode.A))
+            {//move left
+                animator.SetTrigger("idle_left");
+                transform.position += (Vector3.left * moveSpeed) * Time.deltaTime;
 
+            }
+            if (Input.GetKey(KeyCode.D))
+            {//move right
+                animator.SetTrigger("idle_right");
+                transform.position += (Vector3.right * moveSpeed) * Time.deltaTime;
+
+            }
         }
-        if (Input.GetKey(KeyCode.D))
-        {//move right
-            animator.SetTrigger("idle_right");
-            transform.position += (Vector3.right * moveSpeed) * Time.deltaTime;
-
-        }
-        if (Input.GetKey(KeyCode.S))
-        {//move down
-            animator.SetTrigger("idle_front");
-            transform.position += (Vector3.down * moveSpeed) * Time.deltaTime;
-
-        }
-
     }
 }
