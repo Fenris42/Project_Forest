@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Open_Door : MonoBehaviour
+public class Tunnel: MonoBehaviour
 {
     //public variables
 
     //private variables
-    [SerializeField] private SpriteRenderer doorSprite;
+    [SerializeField] private SpriteRenderer topDoorSprite;
+    [SerializeField] private SpriteRenderer bottomDoorSprite;
     [SerializeField] private BoxCollider2D doorHitbox;
     private bool playerInRange = false;
     
@@ -35,7 +36,8 @@ public class Open_Door : MonoBehaviour
 
     private void OpenDoor()
     {
-        doorSprite.enabled = false;
+        bottomDoorSprite.enabled = false;
+        topDoorSprite.enabled = false;
         doorHitbox.enabled = false;
 
     }

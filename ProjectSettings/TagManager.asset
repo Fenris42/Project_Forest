@@ -44,6 +44,9 @@ TagManager:
   - name: Background
     uniqueID: 1338344877
     locked: 0
+  - name: Tilemap
+    uniqueID: 4084139715
+    locked: 0
   - name: Prop
     uniqueID: 3673797939
     locked: 0
