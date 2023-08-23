@@ -2,42 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Open_Door : MonoBehaviour
+public class Range_Check : MonoBehaviour
 {
-    //public variables
-
     //private variables
-    [SerializeField] private SpriteRenderer doorSprite;
-    [SerializeField] private BoxCollider2D doorHitbox;
     private bool playerInRange = false;
-    
 
     // Start is called before the first frame update
     void Start()
     {
-
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlayerInput();
+        
     }
 
-    private void PlayerInput()
+    public bool IsPlayerInRange()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerInRange == true)
-        {
-            OpenDoor();
-        }
-    }
-
-    private void OpenDoor()
-    {
-        doorSprite.enabled = false;
-        doorHitbox.enabled = false;
-
+        return playerInRange;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

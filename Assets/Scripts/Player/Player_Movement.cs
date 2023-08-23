@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player_Movement : MonoBehaviour
 {
     //public variables
+    
 
     //private variables
     private Animator animator;
@@ -36,50 +37,72 @@ public class Player_Movement : MonoBehaviour
         { 
             if (Input.GetKey(KeyCode.W))
             {//move up
-                animator.SetBool("walk_back", true);
-                animator.SetBool("walk_front", false);
-                animator.SetBool("walk_left", false);
-                animator.SetBool("walk_right", false);
-                transform.position += (Vector3.up * moveSpeed) * Time.deltaTime;
-
+                MoveUp();
             }
             if (Input.GetKey(KeyCode.S))
             {//move down
-                animator.SetBool("walk_front", true);
-                animator.SetBool("walk_back", false);
-                animator.SetBool("walk_left", false);
-                animator.SetBool("walk_right", false);
-                transform.position += (Vector3.down * moveSpeed) * Time.deltaTime;
-
+                MoveDown();
             }
         }
         else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
         {
             if (Input.GetKey(KeyCode.A))
             {//move left
-                animator.SetBool("walk_left", true);
-                animator.SetBool("walk_back", false);
-                animator.SetBool("walk_front", false);
-                animator.SetBool("walk_right", false);
-                transform.position += (Vector3.left * moveSpeed) * Time.deltaTime;
-
+                MoveLeft();
             }
             if (Input.GetKey(KeyCode.D))
             {//move right
-                animator.SetBool("walk_right", true);
-                animator.SetBool("walk_back", false);
-                animator.SetBool("walk_front", false);
-                animator.SetBool("walk_left", false);
-                transform.position += (Vector3.right * moveSpeed) * Time.deltaTime;
-
+                MoveRight();
             }
         }
         else
         {//reset animators
-            animator.SetBool("walk_back", false);
-            animator.SetBool("walk_front", false);
-            animator.SetBool("walk_left", false);
-            animator.SetBool("walk_right", false);
+            ResetAnimator();
         }
+    }
+
+    private void MoveUp()
+    {
+        animator.SetBool("walk_back", true);
+        animator.SetBool("walk_front", false);
+        animator.SetBool("walk_left", false);
+        animator.SetBool("walk_right", false);
+        transform.position += (Vector3.up * moveSpeed) * Time.deltaTime;
+    }
+
+    private void MoveDown()
+    {
+        animator.SetBool("walk_front", true);
+        animator.SetBool("walk_back", false);
+        animator.SetBool("walk_left", false);
+        animator.SetBool("walk_right", false);
+        transform.position += (Vector3.down * moveSpeed) * Time.deltaTime;
+    }
+
+    private void MoveLeft()
+    {
+        animator.SetBool("walk_left", true);
+        animator.SetBool("walk_back", false);
+        animator.SetBool("walk_front", false);
+        animator.SetBool("walk_right", false);
+        transform.position += (Vector3.left * moveSpeed) * Time.deltaTime;
+    }
+
+    private void MoveRight()
+    {
+        animator.SetBool("walk_right", true);
+        animator.SetBool("walk_back", false);
+        animator.SetBool("walk_front", false);
+        animator.SetBool("walk_left", false);
+        transform.position += (Vector3.right * moveSpeed) * Time.deltaTime;
+
+    }
+
+    private void ResetAnimator()
+    {
+        animator.SetBool("walk_back", false);
+        animator.SetBool("walk_front", false);
+        animator.SetBool("walk_left", false);
+        animator.SetBool("walk_right", false);
     }
 }

@@ -6318,7 +6318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4716778727929656594, guid: 045d470ce77cc8d449a8d12fb445efc6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.87
+      value: -3.01
       objectReference: {fileID: 0}
     - target: {fileID: 4716778727929656594, guid: 045d470ce77cc8d449a8d12fb445efc6, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6445,6 +6445,10 @@ PrefabInstance:
     - target: {fileID: 2471732953606896249, guid: 54faede8139a1eb44b5b47b6d722addd, type: 3}
       propertyPath: m_Name
       value: Tunnel Room 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4897480539629698849, guid: 54faede8139a1eb44b5b47b6d722addd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6398368564287663995, guid: 54faede8139a1eb44b5b47b6d722addd, type: 3}
       propertyPath: m_RootOrder
