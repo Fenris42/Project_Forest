@@ -9,6 +9,7 @@ public class Player_Movement : MonoBehaviour
 
     //private variables
     private Animator animator;
+    private Direction direction = new Direction();
 
     //stats
     [SerializeField] private int moveSpeed;
@@ -21,15 +22,18 @@ public class Player_Movement : MonoBehaviour
         //import components
         animator = GetComponentInChildren<Animator>();
 
+        //set default facing direction
+        direction.Down();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        PlayerInput();
     }
 
-    private void Movement()
+    private void PlayerInput()
     {//move character per players input
 
         //separated to 2 if statements to prevent diagonal movement
@@ -63,46 +67,63 @@ public class Player_Movement : MonoBehaviour
 
     private void MoveUp()
     {
-        animator.SetBool("walk_back", true);
-        animator.SetBool("walk_front", false);
+        animator.SetBool("walk_up", true);
+        animator.SetBool("walk_down", false);
         animator.SetBool("walk_left", false);
         animator.SetBool("walk_right", false);
+
+        direction.Up();
+
         transform.position += (Vector3.up * moveSpeed) * Time.deltaTime;
     }
 
     private void MoveDown()
     {
-        animator.SetBool("walk_front", true);
-        animator.SetBool("walk_back", false);
+        animator.SetBool("walk_up", false);
+        animator.SetBool("walk_down", true);
         animator.SetBool("walk_left", false);
         animator.SetBool("walk_right", false);
+
+        direction.Down();
+
         transform.position += (Vector3.down * moveSpeed) * Time.deltaTime;
     }
 
     private void MoveLeft()
     {
+        animator.SetBool("walk_up", false);
+        animator.SetBool("walk_down", false);
         animator.SetBool("walk_left", true);
-        animator.SetBool("walk_back", false);
-        animator.SetBool("walk_front", false);
         animator.SetBool("walk_right", false);
+
+        direction.Left();
+
         transform.position += (Vector3.left * moveSpeed) * Time.deltaTime;
     }
 
     private void MoveRight()
     {
-        animator.SetBool("walk_right", true);
-        animator.SetBool("walk_back", false);
-        animator.SetBool("walk_front", false);
+        animator.SetBool("walk_up", false);
+        animator.SetBool("walk_down", false);
         animator.SetBool("walk_left", false);
+        animator.SetBool("walk_right", true);
+
+        direction.Right();
+
         transform.position += (Vector3.right * moveSpeed) * Time.deltaTime;
 
     }
 
     private void ResetAnimator()
     {
-        animator.SetBool("walk_back", false);
-        animator.SetBool("walk_front", false);
+        animator.SetBool("walk_up", false);
+        animator.SetBool("walk_down", false);
         animator.SetBool("walk_left", false);
         animator.SetBool("walk_right", false);
+    }
+
+    public Direction GetDirection()
+    {//return object for which direction player is facing
+        return direction;
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5925212155096399371}
   - component: {fileID: 6511742233690211284}
   - component: {fileID: -8044648952486164376}
+  - component: {fileID: 6745316565580741494}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -68,7 +69,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0006135702, y: 0.007462144}
+  m_Offset: {x: 0.002318889, y: 0.0015971661}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -79,7 +80,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.71838, y: 1.0525336}
+  m_Size: {x: 0.71547216, y: 0.9938842}
   m_EdgeRadius: 0
 --- !u!50 &5925212155096399371
 Rigidbody2D:
@@ -136,6 +137,25 @@ MonoBehaviour:
   HealthBarObject: {fileID: 0}
   health: 100
   maxHealth: 100
+--- !u!114 &6745316565580741494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3678469287935534667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075fc421b7e4e08489eae9b2d0f782b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5808070868619931826}
+  mobLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  attackRange: 1
+  attackOffset: 0.5
+  attackDamage: 10
 --- !u!1 &8483856223625739786
 GameObject:
   m_ObjectHideFlags: 0
