@@ -152,9 +152,8 @@ MonoBehaviour:
   animator: {fileID: 5808070868619931826}
   mobLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   attackRange: 1
-  attackOffset: 0.5
   attackDamage: 10
 --- !u!1 &8483856223625739786
 GameObject:
@@ -228,7 +227,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 691004153
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 1544667767, guid: 56aad4ef3d8e653458f5c941edefc617, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

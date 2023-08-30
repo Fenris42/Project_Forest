@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Mob
   layers:
   - Default
   - TransparentFX
@@ -11,7 +12,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Mob
   - 
   - 
   - 
@@ -49,6 +50,9 @@ TagManager:
     locked: 0
   - name: Prop
     uniqueID: 3673797939
+    locked: 0
+  - name: Mob
+    uniqueID: 2801995299
     locked: 0
   - name: Player
     uniqueID: 691004153

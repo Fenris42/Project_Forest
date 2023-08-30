@@ -51,73 +51,54 @@ public class Player_Attack_Melee : MonoBehaviour
     
     private void SwordAttack()
     {
-        /*
-        //change animation to sword attack
-        animator.SetTrigger("Sword_Attack");
-
-        //detect enemies in sword range
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(swordAttackRange.position, swordRange, mobLayer);
-        Collider2D[] enemies = Physics2D.OverlapBoxAll(transform.position, attackRange, mobLayer);
-
-        //loop through each enemy in range
-        foreach (Collider2D enemy in enemies)
-        {
-            //damage enemy
-            //enemy.GetComponent<Mob_Slime>().TakeDamage(swordAttackPower);
-        }
-        */
         //get players coordinates
         float x = transform.position.x;
         float y = transform.position.y;
 
         //array to store all in range enemies
         
-
+        //set animation and coordinate offset
         if(direction.up == true)
         {//Up
 
-            animator.SetTrigger("attack_up");
-
-            //offset
             y += attackRange;
+            animator.SetTrigger("attack_up");
 
         }
         else if(direction.down == true)
         {//Down
 
-            animator.SetTrigger("attack_down");
-            //offset
             y -= attackRange;
+            animator.SetTrigger("attack_down");
 
         }
         else if (direction.left == true)
         {//Left
 
-            animator.SetTrigger("attack_left");
-
-            //offset
             x -= attackRange;
+            animator.SetTrigger("attack_left");
 
         }
         else if (direction.right == true)
         {//Right
 
-            animator.SetTrigger("attack_right");
-
-            //offset
             x += attackRange;
+            animator.SetTrigger("attack_right");
         }
 
         //get all enemies in attack range
-        Collider2D[] enemies = Physics2D.OverlapBoxAll(new Vector2(x, y), new Vector2(attackRange, attackRange), mobLayer);
+        Collider2D[] targets = Physics2D.OverlapBoxAll(new Vector2(x, y), new Vector2(attackRange, attackRange), 0);
 
         //loop through each enemy and damage
-        foreach (Collider2D enemy in enemies)
+        foreach (Collider2D target in targets)
         {
-            //damage enemy
-            //enemy.GetComponent<Mob_Slime>().TakeDamage(swordAttackPower);
-        }
+            if (target.tag == "Mob")
+            {//damage enemy
 
+                target.GetComponent<Mob_Health>().Damage(attackDamage);
+            }
+            
+        }
     }
 
 

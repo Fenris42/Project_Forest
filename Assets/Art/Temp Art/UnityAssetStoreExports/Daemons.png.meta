@@ -1,0 +1,1521 @@
+fileFormatVersion: 2
+guid: efef9d7769d7e1c4fbf765974d26533c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8660488064105803115
+    second: Daemons_2
+  - first:
+      213: 2506328554285755566
+    second: Daemons_3
+  - first:
+      213: -6812436413751847659
+    second: Daemons_4
+  - first:
+      213: -354344236524984719
+    second: Daemons_5
+  - first:
+      213: -7421083850528085570
+    second: Daemons_6
+  - first:
+      213: -4104715481670510259
+    second: Daemons_7
+  - first:
+      213: 6177075501601533703
+    second: Daemons_9
+  - first:
+      213: -6205263883817022554
+    second: Daemons_11
+  - first:
+      213: 6952124558450652279
+    second: Daemons_14
+  - first:
+      213: 7287449176722530566
+    second: Daemons_15
+  - first:
+      213: -7705142344988743934
+    second: Daemons_16
+  - first:
+      213: -1104937210103502779
+    second: Daemons_17
+  - first:
+      213: -5383051665984936242
+    second: Daemons_20
+  - first:
+      213: 2223229156712978820
+    second: Daemons_21
+  - first:
+      213: 3872488979127691405
+    second: Daemons_22
+  - first:
+      213: 1480903098374382782
+    second: Daemons_23
+  - first:
+      213: 5903203780476642209
+    second: Daemons_24
+  - first:
+      213: -6468955252472751403
+    second: Daemons_25
+  - first:
+      213: -5733468891144105869
+    second: Daemons_26
+  - first:
+      213: 8619593181315066144
+    second: Daemons_27
+  - first:
+      213: 997543046663750981
+    second: Daemons_28
+  - first:
+      213: 4743351366961752154
+    second: Daemons_31
+  - first:
+      213: -4866676472983080188
+    second: Daemons_32
+  - first:
+      213: 5177559829274349963
+    second: Daemons_33
+  - first:
+      213: -352630049830308046
+    second: Daemons_34
+  - first:
+      213: -1415322032550958920
+    second: Daemons_36
+  - first:
+      213: 7658542407909571512
+    second: Daemons_37
+  - first:
+      213: 5736237562643917380
+    second: Daemons_38
+  - first:
+      213: -1426656124264659525
+    second: Daemons_39
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Daemons_4
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 196
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 515926fec2d5571a0800000000000000
+      internalID: -6812436413751847659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_5
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 196
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 176a8b55bcd151bf0800000000000000
+      internalID: -354344236524984719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_6
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 198
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb9a2e87e83030990800000000000000
+      internalID: -7421083850528085570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_7
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 198
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d499bf2640f1907c0800000000000000
+      internalID: -4104715481670510259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_9
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 198
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70f2abfe07169b550800000000000000
+      internalID: 6177075501601533703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_11
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 196
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ab8683ef5972e9a0800000000000000
+      internalID: -6205263883817022554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_14
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 196
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77478b4b378ea7060800000000000000
+      internalID: 6952124558450652279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_15
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 196
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60162496a68322560800000000000000
+      internalID: 7287449176722530566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_20
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 166
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec6a469c70f8b45b0800000000000000
+      internalID: -5383051665984936242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_22
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 166
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d88658d8538ddb530800000000000000
+      internalID: 3872488979127691405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_23
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 166
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb4616595893d8410800000000000000
+      internalID: 1480903098374382782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_28
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 149
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 545cd80ad1cf7dd00800000000000000
+      internalID: 997543046663750981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_31
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 149
+        width: 24
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a586e98dfe4c3d140800000000000000
+      internalID: 4743351366961752154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_32
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 149
+        width: 14
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 403b7175887167cb0800000000000000
+      internalID: -4866676472983080188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_33
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 149
+        width: 14
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b81da3b9b336ad740800000000000000
+      internalID: 5177559829274349963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_34
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 134
+        width: 28
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2377cb686d43b1bf0800000000000000
+      internalID: -352630049830308046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_36
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 134
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b8240f2c14cb5ce0800000000000000
+      internalID: -1415322032550958920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_37
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 134
+        width: 32
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bbf6b84ebb984a60800000000000000
+      internalID: 7658542407909571512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_8
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 198
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8261aa45dc90eb342802c9554ccc7d3a
+      internalID: 1362391651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_10
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 196
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5be36dd034477134da0c5e17686eb656
+      internalID: -224170563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_12
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 196
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0ee20496e3534b4c8d05cff3b6dc6b4
+      internalID: 1710660208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_13
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 196
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dd487f8928a5644095bf9ee0483ec63
+      internalID: 1691479947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_18
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 166
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57f98eaa7a3808246b9d9eaecf1b9688
+      internalID: -501958220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_29
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 149
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb902441293cf1c41a23cc7a2259f0b2
+      internalID: 1910815146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_30
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 149
+        width: 24
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63fa1e2c6d6870347a914174ac90fdbc
+      internalID: -2134060183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_35
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 134
+        width: 28
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 306b1d174533f794bb24a13c75e8bce8
+      internalID: -1122878421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_40
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 149
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41a02c24513b61845927e867152a7da2
+      internalID: -1483565447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_41
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 149
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5b4ec0ea8066b148ad0de5bbd327040
+      internalID: 270242443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_42
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 86
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a54e3b58a77e614bac5d3c2f6149f45
+      internalID: 640240992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_43
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 86
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf8cb5177dbeac1478bceb89add1fe56
+      internalID: -2091030366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_44
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 86
+        width: 24
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2798bd9408395c409ff558f9d77cc75
+      internalID: 120913642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_45
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 86
+        width: 24
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8818d60046e7ffe409ae58f39fce146a
+      internalID: 1891154405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_46
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 100
+        width: 28
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 389a072166267664a90b5c25768700a5
+      internalID: 1958741132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_47
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 100
+        width: 28
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daaf78cf1cf64b74fac01b7c72c875ee
+      internalID: -676464324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_48
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 100
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaa17064588cb4148921464d40d0bc4c
+      internalID: 1071211011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_49
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 100
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a29c87147a17c743a20798d3941e17b
+      internalID: -476639885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_50
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 100
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 356728a158f499a4485910ad0dafb8ae
+      internalID: 1178669670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_51
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 100
+        width: 24
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f1f63d0c4e3514489dcb932b013355e
+      internalID: -1307509460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_52
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 100
+        width: 24
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb9acc53cc36f1b4094e4915d62028fe
+      internalID: -182008010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_53
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 100
+        width: 24
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f48cc767e40a7b44a251b514f19aad3
+      internalID: -1450464999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_60
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 52
+        width: 32
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4de3f2817be5a2246b16ae7bb3837ab6
+      internalID: 350190550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_61
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 52
+        width: 32
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be7c091961eef7e4093ca9dc4adc25b8
+      internalID: -947239787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_62
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 52
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cceebf64dcf98934180cad90d7838644
+      internalID: -1939096623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_63
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 52
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a4f98905264ff04990dac713473dd38
+      internalID: 861719099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_64
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 52
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6077b5cf5664b54182ffe400d8ea43b
+      internalID: 1020274036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_65
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 52
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51e3ab6bed637f248af57c96a238b3ac
+      internalID: -203018107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_66
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 54
+        width: 14
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a58d882dddcb0d946aa3b3a336ddbcf0
+      internalID: -1621477118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_67
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 54
+        width: 14
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b26b2c91f76567c4f9e7c9edec62af67
+      internalID: -475333747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_68
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 52
+        width: 24
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6ca411a3325f3a46802418512cb10d5
+      internalID: -1058284603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_69
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 52
+        width: 24
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1b6b390526751b4ba7abe63fcaa7445
+      internalID: -76126710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_72
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 4
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81ea87398f1a7f04481f3f0668aa0ba2
+      internalID: 1262780914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_73
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 4
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d7115271506e174dbdb0b6f9db64426
+      internalID: -1362523456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_74
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 4
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88c6def0e4610b149b64d4c9b0fcc9fe
+      internalID: 1704906592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_75
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 4
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a03aea41960b1ca4db86c237290030d1
+      internalID: 1634307896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_76
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 4
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6d289edf6a70424e82a7e79b0b475dc
+      internalID: -455823120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_77
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 4
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f206df82564d7f4680d0cf8eb1f0d3b
+      internalID: -791956001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_78
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 4
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c17cac366513eb449d8a5c4dbf703c8
+      internalID: -1712528044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Daemons_79
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 4
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b20bb459f2c144843b44cde8b7cc9e6c
+      internalID: 211880812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Daemons_0: 1476028984
+      Daemons_1: 1132796558
+      Daemons_10: -224170563
+      Daemons_11: -6205263883817022554
+      Daemons_12: 1710660208
+      Daemons_13: 1691479947
+      Daemons_14: 6952124558450652279
+      Daemons_15: 7287449176722530566
+      Daemons_16: -7705142344988743934
+      Daemons_17: -1104937210103502779
+      Daemons_18: -501958220
+      Daemons_19: 1566255082
+      Daemons_2: 8660488064105803115
+      Daemons_20: -5383051665984936242
+      Daemons_21: 2223229156712978820
+      Daemons_22: 3872488979127691405
+      Daemons_23: 1480903098374382782
+      Daemons_24: 5903203780476642209
+      Daemons_25: -6468955252472751403
+      Daemons_26: -5733468891144105869
+      Daemons_27: 8619593181315066144
+      Daemons_28: 997543046663750981
+      Daemons_29: 1910815146
+      Daemons_3: 2506328554285755566
+      Daemons_30: -2134060183
+      Daemons_31: 4743351366961752154
+      Daemons_32: -4866676472983080188
+      Daemons_33: 5177559829274349963
+      Daemons_34: -352630049830308046
+      Daemons_35: -1122878421
+      Daemons_36: -1415322032550958920
+      Daemons_37: 7658542407909571512
+      Daemons_38: 5736237562643917380
+      Daemons_39: -1426656124264659525
+      Daemons_4: -6812436413751847659
+      Daemons_40: -1483565447
+      Daemons_41: 270242443
+      Daemons_42: 640240992
+      Daemons_43: -2091030366
+      Daemons_44: 120913642
+      Daemons_45: 1891154405
+      Daemons_46: 1958741132
+      Daemons_47: -676464324
+      Daemons_48: 1071211011
+      Daemons_49: -476639885
+      Daemons_5: -354344236524984719
+      Daemons_50: 1178669670
+      Daemons_51: -1307509460
+      Daemons_52: -182008010
+      Daemons_53: -1450464999
+      Daemons_54: 153884988
+      Daemons_55: -2075435131
+      Daemons_56: -907023397
+      Daemons_57: 1121704110
+      Daemons_58: 562341306
+      Daemons_59: -1257169889
+      Daemons_6: -7421083850528085570
+      Daemons_60: 350190550
+      Daemons_61: -947239787
+      Daemons_62: -1939096623
+      Daemons_63: 861719099
+      Daemons_64: 1020274036
+      Daemons_65: -203018107
+      Daemons_66: -1621477118
+      Daemons_67: -475333747
+      Daemons_68: -1058284603
+      Daemons_69: -76126710
+      Daemons_7: -4104715481670510259
+      Daemons_70: 70199898
+      Daemons_71: -1242417082
+      Daemons_72: 1262780914
+      Daemons_73: -1362523456
+      Daemons_74: 1704906592
+      Daemons_75: 1634307896
+      Daemons_76: -455823120
+      Daemons_77: -791956001
+      Daemons_78: -1712528044
+      Daemons_79: 211880812
+      Daemons_8: 1362391651
+      Daemons_9: 6177075501601533703
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
