@@ -67,55 +67,69 @@ public class Player_Movement : MonoBehaviour
 
     private void MoveUp()
     {
+        //animators
         animator.SetBool("walk_up", true);
         animator.SetBool("walk_down", false);
         animator.SetBool("walk_left", false);
         animator.SetBool("walk_right", false);
 
+        //set direction facing
         direction.Up();
 
+        //move
         transform.position += (Vector3.up * moveSpeed) * Time.deltaTime;
     }
 
     private void MoveDown()
     {
+        //animators
         animator.SetBool("walk_up", false);
         animator.SetBool("walk_down", true);
         animator.SetBool("walk_left", false);
         animator.SetBool("walk_right", false);
 
+        //set direction facing
         direction.Down();
 
+
+        //move
         transform.position += (Vector3.down * moveSpeed) * Time.deltaTime;
     }
 
     private void MoveLeft()
     {
+        //animators
         animator.SetBool("walk_up", false);
         animator.SetBool("walk_down", false);
         animator.SetBool("walk_left", true);
         animator.SetBool("walk_right", false);
 
+        //set direction facing
         direction.Left();
 
+        //move
         transform.position += (Vector3.left * moveSpeed) * Time.deltaTime;
     }
 
     private void MoveRight()
     {
+        //animators
         animator.SetBool("walk_up", false);
         animator.SetBool("walk_down", false);
         animator.SetBool("walk_left", false);
         animator.SetBool("walk_right", true);
 
+        //set direction facing
         direction.Right();
 
+        //move
         transform.position += (Vector3.right * moveSpeed) * Time.deltaTime;
 
     }
 
     private void ResetAnimator()
     {
+        //reset animation to idle
         animator.SetBool("walk_up", false);
         animator.SetBool("walk_down", false);
         animator.SetBool("walk_left", false);
@@ -124,6 +138,7 @@ public class Player_Movement : MonoBehaviour
 
     public Direction GetDirection()
     {//return object for which direction player is facing
+
         return direction;
     }
 }

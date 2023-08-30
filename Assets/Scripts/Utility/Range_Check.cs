@@ -25,7 +25,7 @@ public class Range_Check : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
+    {//player has entered the BoxCollider2D trigger
         if (collision.gameObject.name == "Player")
         {
             playerInRange = true;
@@ -33,7 +33,7 @@ public class Range_Check : MonoBehaviour
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
-    {
+    {//player has exitted the BoxCollider2D trigger
         if (collision.gameObject.name == "Player")
         {
             playerInRange = false;

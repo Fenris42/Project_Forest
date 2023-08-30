@@ -58,8 +58,11 @@ public class Mob_Health : MonoBehaviour
 
         health -= damage;
         Sanitize();
+
+        //update health bar
         healthBar.Remove(damage);
 
+        //mob has died
         if (health <= 0)
         {
             Die();
@@ -67,17 +70,19 @@ public class Mob_Health : MonoBehaviour
     }
 
     private void Die()
-    {
-        alive = false;
+    {//kill mob
 
+        alive = false;
         animator.SetTrigger("die");
 
         //disable components
         HealthBarObject.SetActive(false);
         GetComponent<BoxCollider2D>().enabled = false;
 
+        //loot
         loot.DropLoot("trash");
 
+        //delete mob after 1 sec
         Invoke("DeleteMob", 1);
     }
 

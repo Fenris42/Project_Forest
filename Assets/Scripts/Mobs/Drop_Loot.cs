@@ -2,18 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Drop_Loot : MonoBehaviour
+public class Drop_Loot
 {
-    // Start is called before the first frame update
-    void Start()
+    public Drop_Loot()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void DropLoot(string lootTable)
