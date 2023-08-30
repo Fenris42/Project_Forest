@@ -12,6 +12,7 @@ public class Mob_Movement : MonoBehaviour
     private Direction direction;
     private bool isAggro;
     private Mob_Health health;
+    private bool AttackRange;
 
     //stats
     [SerializeField] private int moveSpeed;
@@ -70,7 +71,7 @@ public class Mob_Movement : MonoBehaviour
         float disty = Mathf.Abs(my - py);
 
         if (distx > 1)
-        {//move to players x coord 
+        {//move left/right to match player
 
             if (mx > px)
             {//move left
@@ -82,8 +83,8 @@ public class Mob_Movement : MonoBehaviour
             }
         }
         
-        else if (disty > 0.1)
-        {// move to players y coord
+        else if (disty > 1)
+        {// move up/down to match player
 
             if (my < py)
             {//move up
@@ -93,6 +94,11 @@ public class Mob_Movement : MonoBehaviour
             {//move down
                 MoveDown();
             }
+        }
+        else if (distx <= 1 && disty <= 1)
+        {//fine tune intercept to not be diagonal to player
+
+            //check which 1 of the 8 tiles around the mob the player is in and move to a up/down/left/right tile instead of a diagonal
 
         }
         else
@@ -176,6 +182,12 @@ public class Mob_Movement : MonoBehaviour
     {//return object for which direction player is facing
 
         return direction;
+    }
+
+    public bool inAttackRange()
+    {//lets other scripts know if player in attack range
+
+        return AttackRange;
     }
 
     private void OnDrawGizmosSelected()
