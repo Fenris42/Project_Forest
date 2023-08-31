@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Mob_Movement : MonoBehaviour
@@ -58,19 +59,53 @@ public class Mob_Movement : MonoBehaviour
     private void Movement()
     {//move to attack range of player
 
-        //players coords
-        float px = player.transform.position.x;
-        float py = player.transform.position.y;
-
         //mobs coords
         float mx = transform.position.x;
         float my = transform.position.y;
+
+        //player coords
+        float px = player.transform.position.x;
+        float py = player.transform.position.y;
+
+        //tile coords up/down/left/right of player
+        Vector2 upCoord = new Vector2(px, py + 1);
+        Vector2 downCoord = new Vector2(px, py - 1);
+        Vector2 leftCoord = new Vector2(px - 1, py);
+        Vector2 rightCoord = new Vector2(px + 1, py);
+
+        //distances between mob and the players up/down/left/right tile
+        float distUp = Vector2.Distance(transform.position, upCoord);
+        float distDown = Vector2.Distance(transform.position, downCoord);
+        float distLeft = Vector2.Distance(transform.position, leftCoord);
+        float distRight = Vector2.Distance(transform.position, rightCoord);
+
+        //determine what tile up/down/left/right of player is closest
+        if (distUp < distDown && distUp < distLeft && distUp < distRight)
+        {//top tile
+            px = px;
+            py = py + 1;
+        }
+        else if (distDown < distUp && distDown < distLeft && distDown < distRight)
+        {//down tile
+            px = px;
+            py = py - 1;
+        }
+        else if (distLeft < distUp && distLeft < distDown && distLeft < distRight)
+        {//left tile
+            px = px - 1;
+            py = py;
+        }
+        else if (distRight < distUp && distRight < distDown && distRight < distLeft)
+        {//down tile
+            px = px + 1;
+            py = py;
+        }
 
         //distances between objects
         float distx = Mathf.Abs(mx - px);
         float disty = Mathf.Abs(my - py);
 
-        if (distx > 1)
+        if (distx > 0.1)
         {//move left/right to match player
 
             if (mx > px)
@@ -83,7 +118,7 @@ public class Mob_Movement : MonoBehaviour
             }
         }
         
-        else if (disty > 1)
+        else if (disty > 0.1)
         {// move up/down to match player
 
             if (my < py)
@@ -94,12 +129,6 @@ public class Mob_Movement : MonoBehaviour
             {//move down
                 MoveDown();
             }
-        }
-        else if (distx <= 1 && disty <= 1)
-        {//fine tune intercept to not be diagonal to player
-
-            //check which 1 of the 8 tiles around the mob the player is in and move to a up/down/left/right tile instead of a diagonal
-
         }
         else
         {// stop walking animation
