@@ -7,7 +7,7 @@ public class Player_Attack_Melee : MonoBehaviour
     //public variables
 
     //private variables
-    [SerializeField] private Animator animator;
+    private Animator animator;
     [SerializeField] private LayerMask mobLayer;
     private Player_Movement player_movement;
     private Direction direction;
@@ -23,8 +23,9 @@ public class Player_Attack_Melee : MonoBehaviour
 
         //get components
         player_movement = GetComponent<Player_Movement>();
+        animator = GetComponentInChildren<Animator>();
 
-        
+
     }
     
     void Update()
@@ -54,8 +55,6 @@ public class Player_Attack_Melee : MonoBehaviour
         //get players coordinates
         float x = transform.position.x;
         float y = transform.position.y;
-
-        //array to store all in range enemies
         
         //set animation and coordinate offset
         if(direction.up == true)

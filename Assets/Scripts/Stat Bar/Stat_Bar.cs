@@ -84,7 +84,7 @@ public class Stat_Bar : MonoBehaviour
         UpdateChangeBar();
 
         //delay updating the main bar for 1 sec
-        Invoke("UpdateFillBar", 1);
+        Invoke("UpdateFillBar", 0.5f);
 
     }
 
@@ -101,7 +101,7 @@ public class Stat_Bar : MonoBehaviour
         UpdateFillBar();
 
         //delay updating the secondary bar for 1 sec
-        Invoke("UpdateChangeBar", 1);
+        Invoke("UpdateChangeBar", 0.5f);
     }
     
     public void SetFill(int amount)

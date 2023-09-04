@@ -13,10 +13,12 @@ public class Mob_Movement : MonoBehaviour
     private Direction direction;
     private Mob_Health health;
     private Mob_Attack mob_attack;
+    private bool inAttackRange;
 
     //stats
     [SerializeField] private int moveSpeed;
     [SerializeField] private int aggroRange;
+    [SerializeField] private int attackRange;
     
 
 
@@ -35,7 +37,7 @@ public class Mob_Movement : MonoBehaviour
     void Update()
     {// Update is called once per frame
 
-        if (IsAggro() == true && health.Alive() == true && mob_attack.InAttackRange() == false)
+        if (IsAggro() == true && health.Alive() == true)
         {
             Movement();
         }
@@ -45,6 +47,16 @@ public class Mob_Movement : MonoBehaviour
     {//return object for which direction player is facing
 
         return direction;
+    }
+
+    public bool InAttackRange()
+    {
+        return inAttackRange;
+    }
+
+    public float GetAttackRange()
+    {
+        return attackRange;
     }
 
     public bool IsAggro()
@@ -74,8 +86,6 @@ public class Mob_Movement : MonoBehaviour
         //player coords
         float px = player.transform.position.x;
         float py = player.transform.position.y;
-
-        float attackRange = mob_attack.GetAttackRange();
         
         //tile coords up/down/left/right of player
         Vector2 upCoord = new Vector2(px, py + attackRange);
@@ -118,6 +128,8 @@ public class Mob_Movement : MonoBehaviour
         if (distx > 0.1)
         {//move left/right to match player
 
+            inAttackRange = false;
+
             if (mx > px)
             {//move left
                 MoveLeft();
@@ -130,6 +142,8 @@ public class Mob_Movement : MonoBehaviour
         else if (disty > 0.1)
         {// move up/down to match player
 
+            inAttackRange = false;
+
             if (my < py)
             {//move up
                 MoveUp();
@@ -140,9 +154,56 @@ public class Mob_Movement : MonoBehaviour
             }
         }
         else
-        {//mob is in attack range, stop walking animation
+        {
             ResetAnimator();
+            FacePlayer();
+            inAttackRange = true;
         }
+    }
+
+    private void FacePlayer()
+    {// turn to face player
+
+        //mobs coordinates
+        float mx = transform.position.x;
+        float my = transform.position.y;
+
+        //players coordinates
+        float px = player.transform.position.x;
+        float py = player.transform.position.y;
+
+        //distances between objects
+        float distx = Mathf.Abs(mx - px);
+        float disty = Mathf.Abs(my - py);
+
+        if (distx > disty)
+        {//x axis
+            if (mx < px)
+            {//left of player
+                direction.Right();
+                animator.SetTrigger("idle_right");
+            }
+            else if (mx > px)
+            {//right of player
+                direction.Left();
+                animator.SetTrigger("idle_left");
+            }
+        }
+        else if (disty > distx)
+        {//y axis
+            if (my > py)
+            {//up of player
+                direction.Down();
+                animator.SetTrigger("idle_down");
+            }
+            else if (my < py)
+            {//down of player
+                direction.Up();
+                animator.SetTrigger("idle_up");
+            }
+        }
+        
+
     }
 
     private void MoveUp()

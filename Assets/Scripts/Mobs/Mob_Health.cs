@@ -8,7 +8,7 @@ public class Mob_Health : MonoBehaviour
     
     //private variables
     [SerializeField] private GameObject HealthBarObject;
-    [SerializeField] private Animator animator;
+    private Animator animator;
     private Stat_Bar healthBar;
     private bool alive;
     private Drop_Loot loot;
@@ -26,6 +26,7 @@ public class Mob_Health : MonoBehaviour
         //import components
         healthBar = HealthBarObject.GetComponent<Stat_Bar>();
         loot = new Drop_Loot();
+        animator = GetComponentInChildren<Animator>();
 
         //Initialize variables
         healthBar.SetCurrent(health);

@@ -30,4 +30,38 @@ public class Player_Health : MonoBehaviour
     {
         
     }
+
+    private void Sanitize()
+    {//keep values in range
+
+        if (health < 0)
+        {
+            health = 0;
+        }
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+    }
+
+    public void Damage(int damage)
+    {//apply damage to mob
+
+        health -= damage;
+        Sanitize();
+
+        //update health bar
+        healthBar.Remove(damage);
+
+        //mob has died
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+
+    }
 }

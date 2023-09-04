@@ -8,10 +8,14 @@ public class Mob_Attack : MonoBehaviour
 
     //private variables
     private GameObject player;
+    private Animator animator;
+    private float timer;
+    private Mob_Movement mob_movement;
+    private float attackRange;
 
     //stats
-    [SerializeField] private float attackRange;
     [SerializeField] private int attackDamage;
+    [SerializeField] private float attackCoolDown;
 
 
     
@@ -20,41 +24,74 @@ public class Mob_Attack : MonoBehaviour
 
         //get components
         player = GameObject.Find("Player");
+        animator = GetComponentInChildren<Animator>();
+        mob_movement = GetComponent<Mob_Movement>();
+        attackRange = mob_movement.GetAttackRange();
     }
 
     
     void Update()
     {// Update is called once per frame
 
-    }
+        timer += Time.deltaTime;
 
-    public float GetAttackRange()
-    {
-        return attackRange;
-    }
-
-    public bool InAttackRange()
-    {//lets other scripts know if player in attack range
-
-        //mobs coords
-        float mx = transform.position.x;
-        float my = transform.position.y;
-
-        //player coords
-        float px = player.transform.position.x;
-        float py = player.transform.position.y;
-
-        //distances between objects
-        float distx = Mathf.Abs(mx - px);
-        float disty = Mathf.Abs(my - py);
-
-        if (distx < attackRange && disty < attackRange)
+        if (mob_movement.InAttackRange() == true && timer >= attackCoolDown)
         {
-            return true;
+            SwordAttack();
+            timer = 0;
         }
-        else
+    }
+
+    private void SwordAttack()
+    {
+        //get mobs direction
+        Direction direction = GetComponent<Mob_Movement>().GetDirection();
+
+        //get mobs coordinates
+        float x = transform.position.x;
+        float y = transform.position.y;
+
+        //set animation and coordinate offset
+        if (direction.up == true)
+        {//Up
+
+            y += attackRange;
+            animator.SetTrigger("attack_up");
+
+        }
+        else if (direction.down == true)
+        {//Down
+
+            y -= attackRange;
+            animator.SetTrigger("attack_down");
+
+        }
+        else if (direction.left == true)
+        {//Left
+
+            x -= attackRange;
+            animator.SetTrigger("attack_left");
+
+        }
+        else if (direction.right == true)
+        {//Right
+
+            x += attackRange;
+            animator.SetTrigger("attack_right");
+        }
+
+        //get all enemies in attack range
+        Collider2D[] targets = Physics2D.OverlapBoxAll(new Vector2(x, y), new Vector2(attackRange, attackRange), 0);
+
+        //loop through each enemy and damage
+        foreach (Collider2D target in targets)
         {
-            return false;
+            if (target.tag == "Player")
+            {//damage player
+
+                target.GetComponent<Player_Health>().Damage(attackDamage);
+            }
+
         }
     }
 
