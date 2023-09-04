@@ -11,51 +11,59 @@ public class Mob_Movement : MonoBehaviour
     private Animator animator;
     private GameObject player;
     private Direction direction;
-    private bool isAggro;
     private Mob_Health health;
-    private bool AttackRange;
+    private Mob_Attack mob_attack;
 
     //stats
     [SerializeField] private int moveSpeed;
     [SerializeField] private int aggroRange;
+    
 
 
-    // Start is called before the first frame update
     void Start()
-    {
+    {// Start is called before the first frame update
+
         //initialize components
         player = GameObject.Find("Player");
         animator = GetComponentInChildren<Animator>();
         direction = new Direction();
         health = GetComponent<Mob_Health>();
-        
+        mob_attack = GetComponent<Mob_Attack>();
     }
 
-    // Update is called once per frame
+    
     void Update()
-    {
-        Aggro();
+    {// Update is called once per frame
 
-        if (isAggro == true && health.Alive() == true)
+        if (IsAggro() == true && health.Alive() == true && mob_attack.InAttackRange() == false)
         {
             Movement();
         }
-        
     }
 
-    private void Aggro()
+    public Direction GetDirection()
+    {//return object for which direction player is facing
+
+        return direction;
+    }
+
+    public bool IsAggro()
     {//check if player has entered aggro range
 
         //get difference in coordinates between mob and player (line and diagonal)
         float dist = Vector2.Distance(transform.position, player.transform.position);
-
+        
         if (dist < aggroRange)
         {//player has entered aggro range
 
-            isAggro = true;
+            return true;
         }
-        
+        else
+        {
+            return false;
+        }
     }
+
     private void Movement()
     {//move to attack range of player
 
@@ -67,11 +75,13 @@ public class Mob_Movement : MonoBehaviour
         float px = player.transform.position.x;
         float py = player.transform.position.y;
 
+        float attackRange = mob_attack.GetAttackRange();
+        
         //tile coords up/down/left/right of player
-        Vector2 upCoord = new Vector2(px, py + 1);
-        Vector2 downCoord = new Vector2(px, py - 1);
-        Vector2 leftCoord = new Vector2(px - 1, py);
-        Vector2 rightCoord = new Vector2(px + 1, py);
+        Vector2 upCoord = new Vector2(px, py + attackRange);
+        Vector2 downCoord = new Vector2(px, py - attackRange);
+        Vector2 leftCoord = new Vector2(px - attackRange, py);
+        Vector2 rightCoord = new Vector2(px + attackRange, py);
 
         //distances between mob and the players up/down/left/right tile
         float distUp = Vector2.Distance(transform.position, upCoord);
@@ -83,21 +93,21 @@ public class Mob_Movement : MonoBehaviour
         if (distUp < distDown && distUp < distLeft && distUp < distRight)
         {//top tile
             px = px;
-            py = py + 1;
+            py = py + attackRange;
         }
         else if (distDown < distUp && distDown < distLeft && distDown < distRight)
         {//down tile
             px = px;
-            py = py - 1;
+            py = py - attackRange;
         }
         else if (distLeft < distUp && distLeft < distDown && distLeft < distRight)
         {//left tile
-            px = px - 1;
+            px = px - attackRange;
             py = py;
         }
         else if (distRight < distUp && distRight < distDown && distRight < distLeft)
-        {//down tile
-            px = px + 1;
+        {//right tile
+            px = px + attackRange;
             py = py;
         }
 
@@ -117,7 +127,6 @@ public class Mob_Movement : MonoBehaviour
                 MoveRight();
             }
         }
-        
         else if (disty > 0.1)
         {// move up/down to match player
 
@@ -131,8 +140,7 @@ public class Mob_Movement : MonoBehaviour
             }
         }
         else
-        {// stop walking animation
-
+        {//mob is in attack range, stop walking animation
             ResetAnimator();
         }
     }
@@ -195,7 +203,6 @@ public class Mob_Movement : MonoBehaviour
 
         //move
         transform.position += (Vector3.right * moveSpeed) * Time.deltaTime;
-
     }
 
     private void ResetAnimator()
@@ -205,18 +212,6 @@ public class Mob_Movement : MonoBehaviour
         animator.SetBool("walk_down", false);
         animator.SetBool("walk_left", false);
         animator.SetBool("walk_right", false);
-    }
-
-    public Direction GetDirection()
-    {//return object for which direction player is facing
-
-        return direction;
-    }
-
-    public bool inAttackRange()
-    {//lets other scripts know if player in attack range
-
-        return AttackRange;
     }
 
     private void OnDrawGizmosSelected()

@@ -126,12 +126,12 @@ SpriteRenderer:
   m_SortingLayerID: -1492971997
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1712528044, guid: efef9d7769d7e1c4fbf765974d26533c, type: 3}
+  m_Sprite: {fileID: 334721422, guid: 402b6f04aefee4741be646b898a7d08a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 22, y: 27}
+  m_Size: {x: 0.22, y: 0.27}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -407,7 +407,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 5
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0

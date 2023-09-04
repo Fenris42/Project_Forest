@@ -2,26 +2,60 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mob_Attack_Melee : MonoBehaviour
+public class Mob_Attack : MonoBehaviour
 {
     //public variables
 
     //private variables
+    private GameObject player;
 
     //stats
     [SerializeField] private float attackRange;
     [SerializeField] private int attackDamage;
 
-    // Start is called before the first frame update
+
+    
     void Start()
-    {
-        
+    {// Start is called before the first frame update
+
+        //get components
+        player = GameObject.Find("Player");
     }
 
-    // Update is called once per frame
+    
     void Update()
+    {// Update is called once per frame
+
+    }
+
+    public float GetAttackRange()
     {
-        
+        return attackRange;
+    }
+
+    public bool InAttackRange()
+    {//lets other scripts know if player in attack range
+
+        //mobs coords
+        float mx = transform.position.x;
+        float my = transform.position.y;
+
+        //player coords
+        float px = player.transform.position.x;
+        float py = player.transform.position.y;
+
+        //distances between objects
+        float distx = Mathf.Abs(mx - px);
+        float disty = Mathf.Abs(my - py);
+
+        if (distx < attackRange && disty < attackRange)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private void OnDrawGizmosSelected()
