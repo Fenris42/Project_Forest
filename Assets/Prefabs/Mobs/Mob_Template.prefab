@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 7637420344347323477}
   - component: {fileID: 6982568842652096424}
   m_Layer: 6
-  m_Name: Mob_Melee_Template
+  m_Name: Mob_Template
   m_TagString: Mob
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -436,7 +436,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   aggroRange: 5
-  attackRange: 1
 --- !u!114 &7637420344347323477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,7 +448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 408e130a95140dd48ade931539da3b4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthBarObject: {fileID: 406605786190301366}
+  healthBarObject: {fileID: 406605786190301366}
   health: 100
   maxHealth: 100
 --- !u!114 &6982568842652096424
@@ -466,6 +465,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 10
   attackCoolDown: 3
+  attackRange: 1
+  attackType: 0
 --- !u!1 &4966169746412991088
 GameObject:
   m_ObjectHideFlags: 0

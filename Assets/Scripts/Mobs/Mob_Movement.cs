@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Mob_Movement : MonoBehaviour
 {
@@ -14,12 +15,13 @@ public class Mob_Movement : MonoBehaviour
     private Mob_Health health;
     private Mob_Attack mob_attack;
     private bool inAttackRange;
+    private float attackRange;
+    private bool isAggro;
 
     //stats
-    [SerializeField] private int moveSpeed;
-    [SerializeField] private int aggroRange;
-    [SerializeField] private int attackRange;
-    
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float aggroRange;
+
 
 
     void Start()
@@ -31,13 +33,16 @@ public class Mob_Movement : MonoBehaviour
         direction = new Direction();
         health = GetComponent<Mob_Health>();
         mob_attack = GetComponent<Mob_Attack>();
+        attackRange = mob_attack.GetAttackRange();
     }
 
     
     void Update()
     {// Update is called once per frame
 
-        if (IsAggro() == true && health.Alive() == true)
+        IsAggro();
+
+        if (isAggro == true && health.Alive() == true)
         {
             Movement();
         }
@@ -54,12 +59,9 @@ public class Mob_Movement : MonoBehaviour
         return inAttackRange;
     }
 
-    public float GetAttackRange()
-    {
-        return attackRange;
-    }
+    
 
-    public bool IsAggro()
+    private void IsAggro()
     {//check if player has entered aggro range
 
         //get difference in coordinates between mob and player (line and diagonal)
@@ -68,11 +70,7 @@ public class Mob_Movement : MonoBehaviour
         if (dist < aggroRange)
         {//player has entered aggro range
 
-            return true;
-        }
-        else
-        {
-            return false;
+            isAggro = true;
         }
     }
 

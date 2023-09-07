@@ -7,7 +7,7 @@ public class Mob_Health : MonoBehaviour
     //public variables
     
     //private variables
-    [SerializeField] private GameObject HealthBarObject;
+    [SerializeField] private GameObject healthBarObject;
     private Animator animator;
     private Stat_Bar healthBar;
     private bool alive;
@@ -24,7 +24,7 @@ public class Mob_Health : MonoBehaviour
     {// Start is called before the first frame update
 
         //import components
-        healthBar = HealthBarObject.GetComponent<Stat_Bar>();
+        healthBar = healthBarObject.GetComponent<Stat_Bar>();
         loot = new Drop_Loot();
         animator = GetComponentInChildren<Animator>();
 
@@ -77,7 +77,7 @@ public class Mob_Health : MonoBehaviour
         animator.SetTrigger("die");
 
         //disable components
-        HealthBarObject.SetActive(false);
+        healthBarObject.SetActive(false);
         GetComponent<BoxCollider2D>().enabled = false;
 
         //loot
