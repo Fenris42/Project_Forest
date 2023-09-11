@@ -48,16 +48,7 @@ public class Mob_Movement : MonoBehaviour
         }
     }
 
-    public Direction GetDirection()
-    {//return object for which direction player is facing
 
-        return direction;
-    }
-
-    public bool InAttackRange()
-    {
-        return inAttackRange;
-    }
 
     
 
@@ -200,8 +191,6 @@ public class Mob_Movement : MonoBehaviour
                 animator.SetTrigger("idle_up");
             }
         }
-        
-
     }
 
     private void MoveUp()
@@ -271,6 +260,17 @@ public class Mob_Movement : MonoBehaviour
         animator.SetBool("walk_down", false);
         animator.SetBool("walk_left", false);
         animator.SetBool("walk_right", false);
+    }
+
+    public Direction GetDirection()
+    {//return object for which direction player is facing
+
+        return direction;
+    }
+
+    public bool InAttackRange()
+    {
+        return inAttackRange;
     }
 
     private void OnDrawGizmosSelected()

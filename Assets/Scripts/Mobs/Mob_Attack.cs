@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Mob_Attack : MonoBehaviour
 {
@@ -11,15 +12,19 @@ public class Mob_Attack : MonoBehaviour
     private Animator animator;
     private float timer;
     private Mob_Movement mob_movement;
-    private enum attackTypes { Melee, Archer };
-    
+    private Mob_Health mob_health;
+    private enum attackTypes { Fighter, Archer };
+    [SerializeField] GameObject projectilePrefab;
+    private Direction direction = new Direction();
+    private Projectile_Type projectile_type = new Projectile_Type();
 
     //stats
+    [SerializeField] attackTypes attackType;
     [SerializeField] private int attackDamage;
     [SerializeField] private float attackCoolDown;
     [SerializeField] private float attackRange;
     [SerializeField] private float projectileSpeed;
-    [SerializeField] attackTypes attackType;
+    
 
 
 
@@ -30,6 +35,7 @@ public class Mob_Attack : MonoBehaviour
         player = GameObject.Find("Player");
         animator = GetComponentInChildren<Animator>();
         mob_movement = GetComponent<Mob_Movement>();
+        mob_health = GetComponent<Mob_Health>();
        
     }
 
@@ -39,35 +45,54 @@ public class Mob_Attack : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        if (mob_movement.InAttackRange() == true && timer >= attackCoolDown)
+        if (mob_movement.InAttackRange() == true && mob_health.Alive() == true && timer >= attackCoolDown)
         {
-            if (attackType == attackTypes.Melee)
-            {
-                SwordAttack();
-            }
-            else if (attackType == attackTypes.Archer)
-            {
-                ArrowAttack();
-            }
-
+            Attack();
             timer = 0;
-
         }
     }
-    public float GetAttackRange()
+
+    private void Attack()
     {
-        return attackRange;
+        direction = GetComponent<Mob_Movement>().GetDirection();
+        AttackDirection();
+
+        if (attackType == attackTypes.Fighter)
+        {
+            SwordAttack();
+        }
+        else if (attackType == attackTypes.Archer)
+        {
+            ArrowAttack();
+        }
     }
 
-    private void AttackDirection()
+    private Direction AttackDirection()
     {
 
+        //set animation
+        if (direction.up == true)
+        {//Up
+            animator.SetTrigger("attack_up");
+        }
+        else if (direction.down == true)
+        {//Down
+            animator.SetTrigger("attack_down");
+        }
+        else if (direction.left == true)
+        {//Left
+            animator.SetTrigger("attack_left");
+        }
+        else if (direction.right == true)
+        {//Right
+            animator.SetTrigger("attack_right");
+        }
+
+        return direction;
     }
+
     private void SwordAttack()
     {
-        //get mobs direction
-        Direction direction = GetComponent<Mob_Movement>().GetDirection();
-
         //get mobs coordinates
         float x = transform.position.x;
         float y = transform.position.y;
@@ -86,14 +111,13 @@ public class Mob_Attack : MonoBehaviour
         {//correctly offsets the center point of the cube based on attack range
             offset = (attackRange / 2) + 0.5f;
         }
-        
+
 
         //set animation and coordinate offset
         if (direction.up == true)
         {//Up
 
             y += attackRange;
-            animator.SetTrigger("attack_up");
             targets = Physics2D.OverlapBoxAll(new Vector2(x, y + offset), new Vector2(1, attackRange), 0);
 
         }
@@ -101,7 +125,6 @@ public class Mob_Attack : MonoBehaviour
         {//Down
 
             y -= attackRange;
-            animator.SetTrigger("attack_down");
             targets = Physics2D.OverlapBoxAll(new Vector2(x, y - offset), new Vector2(1, attackRange), 0);
 
         }
@@ -109,7 +132,6 @@ public class Mob_Attack : MonoBehaviour
         {//Left
 
             x -= attackRange;
-            animator.SetTrigger("attack_left");
             targets = Physics2D.OverlapBoxAll(new Vector2(x - offset, y), new Vector2(attackRange, 1), 0);
 
         }
@@ -117,13 +139,8 @@ public class Mob_Attack : MonoBehaviour
         {//Right
 
             x += attackRange;
-            animator.SetTrigger("attack_right");
             targets = Physics2D.OverlapBoxAll(new Vector2(x + offset, y), new Vector2(attackRange, 1), 0);
         }
-
-        //get all enemies in attack range
-        //Collider2D[] targets = Physics2D.OverlapBoxAll(new Vector2(x, y), new Vector2(attackRange, attackRange), 0);
-
         //loop through each enemy and damage
         foreach (Collider2D target in targets)
         {
@@ -138,30 +155,30 @@ public class Mob_Attack : MonoBehaviour
 
     private void ArrowAttack()
     {
-
-        //play animation
-        animator.SetTrigger("Attack");
-
-        //spawn arrow in sync with animation
-        Invoke("SpawnArrow", 0.5f);
+        //set projectile type to arrow
+        projectile_type.Arrow();
+        
+        //delay spawn to sync up with attack animation
+        Invoke("SpawnProjectile", 0.5f);
     }
 
     private void SpawnProjectile()
     {
-        /*
-        AttackDirection()
-
+        //get mobs coords
         float x = transform.position.x; 
-        float y = transform.position.y; 
+        float y = transform.position.y;
 
-        var arrow = arrowPrefab.GetComponent<Arrow>();
-        arrow.ArrowSpeed = arrowSpeed;
-        arrow.ArrowDamage = arrowDamage * (drawStrength / 100); //reduce max damage based on % of charge bar filled
-        arrow.ArrowDirection = 1;
+        //spawn clone game object
+        GameObject projectile = Instantiate(projectilePrefab, new Vector3(x, y), transform.rotation);
 
-        //spawn arrow
-        Instantiate(arrowPrefab, new Vector3(xCoord, yCoord), transform.rotation);
-        */
+        //configure instantiated object
+        projectile.GetComponent<Projectile>().Initialize(attackDamage, projectileSpeed, direction, projectile_type);
+
+    }
+
+    public float GetAttackRange()
+    {
+        return attackRange;
     }
 
     private void OnDrawGizmosSelected()
@@ -193,9 +210,6 @@ public class Mob_Attack : MonoBehaviour
 
         //down
         Gizmos.DrawWireCube(new Vector2(x, y - offset), new Vector2(1, attackRange));
-
-
-
 
     }
 }

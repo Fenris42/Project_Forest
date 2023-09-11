@@ -7,138 +7,119 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     //public variables
-    public enum Types { Arrow };
 
     //private variables
+    [SerializeField] private GameObject ArrowObject;
 
     //stats
-    public int Speed;
-    public float Damage;
-    public int Direction; //Left = -1, Right = 1
-    public Types Type;
-    
+    private int damage;
+    private float speed;
+    private Direction direction;
+    private Projectile_Type type;
 
 
-    // Start is called before the first frame update
     void Start()
+    {// Start is called before the first frame update
+
+    }
+
+    void Update()
+    {// Update is called once per frame
+
+        Move();
+    }
+
+    public void Initialize(int Damage, float Speed, Direction Direction, Projectile_Type Projectile_Type)
     {
+        damage = Damage;
+        speed = Speed;
+        direction = Direction;
+        type = Projectile_Type;
+
         //Set which sprite and hitbox to use
         SetType();
 
         //set sprites orientation
         SetDirection();
-        
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //move arrow across screen
-        Move();
-    }
-
     private void Move()
     {//arrows flight pattern
-        /*
-        //Left (Mob fired)
-        if (ArrowDirection == -1) 
-        {
-            transform.position += (Vector3.left * ArrowSpeed) * Time.deltaTime;
+        
+        if (direction.up == true) 
+        {//up
+            transform.position += (Vector3.up * speed) * Time.deltaTime;
         }
-        //right (Player fired)
-        else if (ArrowDirection == 1)
-        {
-            transform.position += (Vector3.right * ArrowSpeed) * Time.deltaTime;
-            
+        else if (direction.down == true)
+        {//down
+            transform.position += (Vector3.down * speed) * Time.deltaTime;
         }
-        */
-
+        else if (direction.left == true)
+        {//left
+            transform.position += (Vector3.left * speed) * Time.deltaTime;
+        }
+        else if (direction.right == true)
+        {//right
+            transform.position += (Vector3.right * speed) * Time.deltaTime;
+        }
     }
 
     private void SetType()
-    {
-        if (Type == Types.Arrow)
-        {
+    {//set active child game object (Sprite and hitbox)
 
+        if (type.arrow == true)
+        {
+            ArrowObject.SetActive(true);
         }
     }
+
     private void SetDirection()
     {//set sprite direction of arrow
-        /*
+        
         //set arrow rotation coords
         float x = transform.rotation.x;
         float y = transform.rotation.y;
-        float z = 90 * ArrowDirection;
+        float z = transform.rotation.z;
 
-        //set arrows rotation
+        if (direction.right == true)
+        {//right (default)
+            z = 0;
+        }
+        else if (direction.down == true)
+        {//down
+            z = -90;
+        }
+        else if (direction.left == true)
+        {//left
+            z = -180;
+        }
+        else if (direction.up == true)
+        {//up
+            z = -270;
+        }
+
+        //set  rotation
         transform.Rotate(x, y, z);
-        */
-    }
-
-    private void DamageMob(GameObject mob, float damage)
-    {
-        /*
-        //get mobs health scrib
-        Mob_Health mobHealth = mob.GetComponentInParent<Mob_Health>();
-
-        //apply damage
-        mobHealth.Damage((int)damage);
-
-        //delete arrow
-        Destroy(gameObject);
-        */
-    }
-
-    private void DamageWall(float damage)
-    {
-        /*
-        //get mobs health scrib
-        Wall_Health wallHealth = GameObject.Find("Game Logic").GetComponent<Wall_Health>();
-
-        //apply damage
-        wallHealth.Damage((int)damage);
-
-        //delete arrow
-        Destroy(gameObject);
-        */
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {//Collision handling
-        /*
-        if (collision.tag == "Kill Zone")
-        {//arrow has gone out of bounds
+        
+        if (collision.tag == "Wall")
+        {//projectile has gone out of bounds
 
-            //delete arrow
+            //delete projectile
             Destroy(gameObject);
         }
 
-        //arrow fired by player
-        if (ArrowDirection == 1)
+        //projectile hit player
+        if (collision.tag == "Player")
         {
-            if (collision.tag == "Mob Head")
-            {//x2 damage for head shot
+            Player_Health player_health = GameObject.Find("Player").GetComponent<Player_Health>();
+            player_health.Damage(damage);
 
-                DamageMob(collision.gameObject, ArrowDamage * 2);
-            }
-            else if (collision.tag == "Mob Body")
-            {//normal damage for body shot
-
-                DamageMob(collision.gameObject, ArrowDamage);
-            }
-
+            //delete projectile
+            Destroy(gameObject);
         }
-        //arrow fired by mob
-        else if (ArrowDirection == -1)
-        {
-            if (collision.tag == "Wall")
-            {//arrow hit the wall. apply damage
-
-                DamageWall(ArrowDamage);
-
-            }
-        }
-        */
-        
     }
 }

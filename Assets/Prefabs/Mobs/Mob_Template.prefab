@@ -463,10 +463,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dead11e46fc4ca43b6cce4193f0dfa5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 5733754461351891539, guid: 0c995803b5f3e73499091e2b8e84c2cf, type: 3}
   attackDamage: 10
   attackCoolDown: 3
-  attackRange: 1
-  attackType: 0
+  attackRange: 5
+  projectileSpeed: 30
+  attackType: 1
 --- !u!1 &4966169746412991088
 GameObject:
   m_ObjectHideFlags: 0

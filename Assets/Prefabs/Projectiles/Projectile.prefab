@@ -11,12 +11,12 @@ GameObject:
   - component: {fileID: 2210723586614991870}
   - component: {fileID: 938354054966444759}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2210723586614991870
 Transform:
   m_ObjectHideFlags: 0
@@ -24,14 +24,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3780246345317947401}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8467742179252499462}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &938354054966444759
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -70,13 +70,13 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -172321021
-  m_SortingLayer: 0
+  m_SortingLayerID: -1492971997
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -57734022, guid: 3cd723d50a962b04db193664d3e350a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 1
+  m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.16, y: 1.08}
   m_AdaptiveModeThreshold: 0.5
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8467742179252499462}
   - component: {fileID: 1482952867982978430}
-  - component: {fileID: 3056493398018148059}
+  - component: {fileID: 5862018854929844167}
   - component: {fileID: 6193547442179918767}
   m_Layer: 0
   m_Name: Projectile
@@ -110,7 +110,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5733754461351891539}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: 0, z: -0.7071068, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -118,7 +118,7 @@ Transform:
   - {fileID: 2210723586614991870}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -270}
 --- !u!50 &1482952867982978430
 Rigidbody2D:
   serializedVersion: 4
@@ -146,7 +146,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &3056493398018148059
+--- !u!61 &5862018854929844167
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,7 +178,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0029838681, y: -0.0021578372}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -189,7 +189,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1759041, y: 1.072685}
+  m_Size: {x: 0.25, y: 0.25}
   m_EdgeRadius: 0
 --- !u!114 &6193547442179918767
 MonoBehaviour:
@@ -203,6 +203,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09de9d3abff42414fa87a8ad875aa9ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArrowSpeed: 0
-  ArrowDamage: 0
-  ArrowDirection: 0
+  ArrowObject: {fileID: 3780246345317947401}
