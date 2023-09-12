@@ -69,6 +69,16 @@ public class Mob_Health : MonoBehaviour
             Die();
         }
     }
+    
+    public void Heal(int heal)
+    {//heal mob
+
+        health += heal;
+        Sanitize();
+
+        //update health bar
+        healthBar.Add(heal);
+    }
 
     private void Die()
     {//kill mob
@@ -91,8 +101,19 @@ public class Mob_Health : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
     public bool Alive()
     {
         return alive;
+    }
+
+    public int GetHealth()
+    {
+        return health;
+    }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
     }
 }

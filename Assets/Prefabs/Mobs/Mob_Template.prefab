@@ -464,11 +464,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 5733754461351891539, guid: 0c995803b5f3e73499091e2b8e84c2cf, type: 3}
+  attackType: 2
   attackDamage: 10
   attackCoolDown: 3
   attackRange: 5
   projectileSpeed: 30
-  attackType: 1
 --- !u!1 &4966169746412991088
 GameObject:
   m_ObjectHideFlags: 0

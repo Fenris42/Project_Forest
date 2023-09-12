@@ -8,17 +8,18 @@ public class Mob_Attack : MonoBehaviour
     //public variables
 
     //private variables
+    [SerializeField] GameObject projectilePrefab;
+
     private GameObject player;
     private Animator animator;
     private float timer;
     private Mob_Movement mob_movement;
     private Mob_Health mob_health;
-    private enum attackTypes { Fighter, Archer };
-    [SerializeField] GameObject projectilePrefab;
     private Direction direction = new Direction();
     private Projectile_Type projectile_type = new Projectile_Type();
 
     //stats
+    private enum attackTypes { Fighter, Archer, Wizard };
     [SerializeField] attackTypes attackType;
     [SerializeField] private int attackDamage;
     [SerializeField] private float attackCoolDown;
@@ -53,45 +54,49 @@ public class Mob_Attack : MonoBehaviour
     }
 
     private void Attack()
-    {
-        direction = GetComponent<Mob_Movement>().GetDirection();
+    {//attack based on which attack type is selected
+
+        //get which direction to attack in
         AttackDirection();
 
+        //random number for weighted attacks
+        //(because unity reasons, lower range is inclusive but max range is exclusive. max range needs to be 1 higher than it should)
+        int x = Random.Range(1, 101);
+
         if (attackType == attackTypes.Fighter)
-        {
-            SwordAttack();
+        {//Fighter profile
+
+            Sword_Basic();
         }
         else if (attackType == attackTypes.Archer)
-        {
-            ArrowAttack();
+        {//Archer profile
+
+            Arrow_Basic();
+        }
+        else if (attackType == attackTypes.Wizard)
+        {//Wizard profile
+
+            if (x >= 1 && x < 45)
+            {//45%
+                Spell_Fireball();
+            }
+            else if (x >= 45 && x < 90)
+            {//45%
+                Spell_Iceball();
+            }
+            else if (x >= 90 && x <= 100)
+            {//10%
+                Spell_Heal();
+            }
         }
     }
 
-    private Direction AttackDirection()
-    {
+    
 
-        //set animation
-        if (direction.up == true)
-        {//Up
-            animator.SetTrigger("attack_up");
-        }
-        else if (direction.down == true)
-        {//Down
-            animator.SetTrigger("attack_down");
-        }
-        else if (direction.left == true)
-        {//Left
-            animator.SetTrigger("attack_left");
-        }
-        else if (direction.right == true)
-        {//Right
-            animator.SetTrigger("attack_right");
-        }
 
-        return direction;
-    }
 
-    private void SwordAttack()
+    // Fighter Attacks //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void Sword_Basic()
     {
         //get mobs coordinates
         float x = transform.position.x;
@@ -153,7 +158,10 @@ public class Mob_Attack : MonoBehaviour
         }
     }
 
-    private void ArrowAttack()
+
+
+    // Archer Attacks //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void Arrow_Basic()
     {
         //set projectile type to arrow
         projectile_type.Arrow();
@@ -162,10 +170,69 @@ public class Mob_Attack : MonoBehaviour
         Invoke("SpawnProjectile", 0.5f);
     }
 
+
+
+
+    // Spells //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void Spell_Fireball()
+    {
+        //set projectile type to fireball
+        projectile_type.Fireball();
+
+        //delay spawn to sync up with attack animation
+        Invoke("SpawnProjectile", 0.5f);
+    }
+
+    private void Spell_Iceball()
+    {
+        //set projectile type to fireball
+        projectile_type.Iceball();
+
+        //delay spawn to sync up with attack animation
+        Invoke("SpawnProjectile", 0.5f);
+    }
+
+    private void Spell_Heal()
+    {//heal for 1/4 health
+
+        int heal = mob_health.GetMaxHealth();
+        heal = heal / 4;
+
+        mob_health.Heal(heal);
+    }
+
+
+
+    //  Utility functions //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private Direction AttackDirection()
+    {
+        direction = GetComponent<Mob_Movement>().GetDirection();
+
+        //set animation
+        if (direction.up == true)
+        {//Up
+            animator.SetTrigger("attack_up");
+        }
+        else if (direction.down == true)
+        {//Down
+            animator.SetTrigger("attack_down");
+        }
+        else if (direction.left == true)
+        {//Left
+            animator.SetTrigger("attack_left");
+        }
+        else if (direction.right == true)
+        {//Right
+            animator.SetTrigger("attack_right");
+        }
+
+        return direction;
+    }
+
     private void SpawnProjectile()
     {
         //get mobs coords
-        float x = transform.position.x; 
+        float x = transform.position.x;
         float y = transform.position.y;
 
         //spawn clone game object

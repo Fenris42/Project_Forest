@@ -10,6 +10,8 @@ public class Projectile : MonoBehaviour
 
     //private variables
     [SerializeField] private GameObject ArrowObject;
+    [SerializeField] private GameObject FireballObject;
+    [SerializeField] private GameObject IceballObject;
 
     //stats
     private int damage;
@@ -64,11 +66,19 @@ public class Projectile : MonoBehaviour
     }
 
     private void SetType()
-    {//set active child game object (Sprite and hitbox)
+    {//set active child sprite
 
         if (type.arrow == true)
         {
             ArrowObject.SetActive(true);
+        }
+        else if (type.fireball == true)
+        {
+            FireballObject.SetActive(true);
+        }
+        else if (type.iceball == true)
+        {
+            IceballObject.SetActive(true);
         }
     }
 
