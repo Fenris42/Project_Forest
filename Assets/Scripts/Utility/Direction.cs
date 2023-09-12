@@ -22,34 +22,33 @@ public class Direction
     //Set direction methods
     public void Up()
     {
+        Reset();
         up = true;
-        down = false;
-        left = false;
-        right = false;
     }
 
     public void Down()
     {
-        up = false;
+        Reset();
         down = true;
-        left = false;
-        right = false;
     }
 
     public void Left()
     {
-        up = false;
-        down = false;
+        Reset();
         left = true;
-        right = false;
     }
 
     public void Right()
     {
-        up = false;
-        down = false;
-        left = false;
+        Reset();
         right = true;
     }
 
+    public void Reset()
+    {
+        up = false;
+        down = false;
+        left = false;
+        right = false;
+    }
 }

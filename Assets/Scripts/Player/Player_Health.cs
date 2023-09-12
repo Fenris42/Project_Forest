@@ -45,7 +45,7 @@ public class Player_Health : MonoBehaviour
     }
 
     public void Damage(int damage)
-    {//apply damage to mob
+    {//apply damage to player
 
         health -= damage;
         Sanitize();
@@ -53,11 +53,21 @@ public class Player_Health : MonoBehaviour
         //update health bar
         healthBar.Remove(damage);
 
-        //mob has died
+        //player has died
         if (health <= 0)
         {
             Die();
         }
+    }
+
+    public void Heal(int heal)
+    {//apply healing to player
+
+        health += heal;
+        Sanitize();
+
+        //update health bar
+        healthBar.Add(health);
     }
 
     private void Die()

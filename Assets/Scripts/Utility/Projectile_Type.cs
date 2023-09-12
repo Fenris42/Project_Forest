@@ -11,7 +11,9 @@ public class Projectile_Type
     //Constructor
     public Projectile_Type()
     {
-
+        arrow = false;
+        fireball = false;
+        iceball = false;
     }
 
     //Methods

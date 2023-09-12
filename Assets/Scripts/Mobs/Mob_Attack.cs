@@ -66,12 +66,18 @@ public class Mob_Attack : MonoBehaviour
         if (attackType == attackTypes.Fighter)
         {//Fighter profile
 
-            Sword_Basic();
+            if (x >= 1 && x <= 100)
+            {//100%
+                Sword_Basic();
+            }
         }
         else if (attackType == attackTypes.Archer)
         {//Archer profile
 
-            Arrow_Basic();
+            if (x >= 1 && x <= 100)
+            {//100%
+                Arrow_Basic();
+            }  
         }
         else if (attackType == attackTypes.Wizard)
         {//Wizard profile
