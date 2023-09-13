@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 4685497295719090515}
   - component: {fileID: 7637420344347323477}
   - component: {fileID: 6982568842652096424}
+  - component: {fileID: 5827230030904303574}
   m_Layer: 6
   m_Name: Mob_Template
   m_TagString: Mob
@@ -464,11 +465,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 5733754461351891539, guid: 0c995803b5f3e73499091e2b8e84c2cf, type: 3}
-  attackType: 2
+  classType: 0
   attackDamage: 10
   attackCoolDown: 3
-  attackRange: 5
+  attackRange: 1
   projectileSpeed: 30
+--- !u!114 &5827230030904303574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4575053745517366529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91c972be4b640bf4c8710db4d9d6d7ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4966169746412991088
 GameObject:
   m_ObjectHideFlags: 0

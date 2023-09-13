@@ -10,30 +10,53 @@ public class Player_Movement : MonoBehaviour
     //private variables
     private Animator animator;
     private Direction direction = new Direction();
+    private bool hold;
+    private bool stunned;
 
     //stats
     [SerializeField] private int moveSpeed;
 
 
 
-    // Start is called before the first frame update
+    
     void Start()
-    {
-        //import components
-        animator = GetComponentInChildren<Animator>();
+    {// Start is called before the first frame update
 
-        //set default facing direction
+        //initialize components/variables
+        animator = GetComponentInChildren<Animator>();
         direction.Down();
 
     }
 
-    // Update is called once per frame
+    
     void Update()
-    {
-        PlayerInput();
+    {// Update is called once per frame
+
+        if (GetHolds() == false)
+        {
+            Movement();
+        }
+        else
+        {
+            ResetAnimator();
+        }
+        
     }
 
-    private void PlayerInput()
+    private bool GetHolds()
+    {
+        if (stunned == true)
+        {
+            hold = true;
+        }
+        else
+        {
+            hold = false;
+        }
+
+        return hold;
+    }
+    private void Movement()
     {//move character per players input
 
         //separated to 2 if statements to prevent diagonal movement
@@ -128,12 +151,51 @@ public class Player_Movement : MonoBehaviour
     }
 
     private void ResetAnimator()
-    {
-        //reset animation to idle
+    {//reset animation to idle
+
         animator.SetBool("walk_up", false);
         animator.SetBool("walk_down", false);
         animator.SetBool("walk_left", false);
         animator.SetBool("walk_right", false);
+    }
+
+    public void Knockback(Direction knockbackDirection)
+    {//push the player in a direction
+
+        //modifier for knockback amount
+        float knockback = 1.5f;
+
+        if (knockbackDirection.up == true)
+        {//up
+            transform.position += Vector3.up * knockback;
+        }
+        else if (knockbackDirection.down == true)
+        {//down
+            transform.position += Vector3.down * knockback;
+        }
+        else if (knockbackDirection.left == true)
+        {//left
+            transform.position += Vector3.left * knockback;
+        }
+        else if (knockbackDirection.right == true)
+        {//right
+            transform.position += Vector3.right * knockback;
+        }
+
+        //stun player for 1sec
+        Stun();
+    }
+
+    private void Stun()
+    {//stun player for x duration of time
+
+        stunned = true;
+        Invoke("ResetStun", 1f);
+    }
+
+    private void ResetStun()
+    {
+        stunned = false;
     }
 
     public Direction GetDirection()

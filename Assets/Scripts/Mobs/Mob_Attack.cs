@@ -19,8 +19,8 @@ public class Mob_Attack : MonoBehaviour
     private Projectile_Type projectile_type = new Projectile_Type();
 
     //stats
-    private enum attackTypes { Fighter, Archer, Wizard };
-    [SerializeField] attackTypes attackType;
+    private enum classTypes { Fighter, Archer, Wizard };
+    [SerializeField] classTypes classType;
     [SerializeField] private int attackDamage;
     [SerializeField] private float attackCoolDown;
     [SerializeField] private float attackRange;
@@ -63,7 +63,7 @@ public class Mob_Attack : MonoBehaviour
         //(because unity reasons, lower range is inclusive but max range is exclusive. max range needs to be 1 higher than it should)
         int x = Random.Range(1, 101);
 
-        if (attackType == attackTypes.Fighter)
+        if (classType == classTypes.Fighter)
         {//Fighter profile
 
             if (x >= 1 && x <= 100)
@@ -71,7 +71,7 @@ public class Mob_Attack : MonoBehaviour
                 Sword_Basic();
             }
         }
-        else if (attackType == attackTypes.Archer)
+        else if (classType == classTypes.Archer)
         {//Archer profile
 
             if (x >= 1 && x <= 100)
@@ -79,7 +79,7 @@ public class Mob_Attack : MonoBehaviour
                 Arrow_Basic();
             }  
         }
-        else if (attackType == attackTypes.Wizard)
+        else if (classType == classTypes.Wizard)
         {//Wizard profile
 
             if (x >= 1 && x < 45)
@@ -252,6 +252,11 @@ public class Mob_Attack : MonoBehaviour
     public float GetAttackRange()
     {
         return attackRange;
+    }
+
+    public int GetAttackDamage()
+    {
+        return attackDamage;
     }
 
     private void OnDrawGizmosSelected()

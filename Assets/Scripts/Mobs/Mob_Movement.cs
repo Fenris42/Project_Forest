@@ -14,9 +14,12 @@ public class Mob_Movement : MonoBehaviour
     private Direction direction;
     private Mob_Health health;
     private Mob_Attack mob_attack;
+    private Mob_Collision mob_collision;
     private bool inAttackRange;
     private float attackRange;
     private bool isAggro;
+    private bool hold;
+    private bool stunned;
 
     //stats
     [SerializeField] private float moveSpeed;
@@ -27,32 +30,58 @@ public class Mob_Movement : MonoBehaviour
     void Start()
     {// Start is called before the first frame update
 
-        //initialize components
+        //initialize components/variables
         player = GameObject.Find("Player");
         animator = GetComponentInChildren<Animator>();
         direction = new Direction();
         health = GetComponent<Mob_Health>();
         mob_attack = GetComponent<Mob_Attack>();
         attackRange = mob_attack.GetAttackRange();
+        mob_collision = GetComponent<Mob_Collision>();
     }
 
     
     void Update()
     {// Update is called once per frame
 
-        IsAggro();
-
-        if (isAggro == true && health.Alive() == true)
-        {
+        if (GetHolds() == false)
+        {//move towards player
             Movement();
+        }
+        else if (GetHolds() == true && IsAggro() == true)
+        {//point towards player if aggro and unable to move
+            FacePlayer();
         }
     }
 
+    private bool GetHolds()
+    {//get movement holds
 
+        if (IsAggro() == false)
+        {//is mob aggroed
+            hold = true;
+        }
+        else if (health.Alive() == false)
+        {//is mob alive
+            hold = true;
+        }
+        else if (mob_collision.OnHold() == true)
+        {//collision with player or wall occurred
+            hold = true;
+        }
+        else if (stunned == true)
+        {
+            hold = true;
+        }
+        else
+        {//no holds, mob free to move
+            hold = false;
+        }
 
-    
+        return hold;
+    }
 
-    private void IsAggro()
+    private bool IsAggro()
     {//check if player has entered aggro range
 
         //get difference in coordinates between mob and player (line and diagonal)
@@ -63,6 +92,8 @@ public class Mob_Movement : MonoBehaviour
 
             isAggro = true;
         }
+
+        return isAggro;
     }
 
     private void Movement()
@@ -144,7 +175,6 @@ public class Mob_Movement : MonoBehaviour
         }
         else
         {
-            ResetAnimator();
             FacePlayer();
             inAttackRange = true;
         }
@@ -152,6 +182,8 @@ public class Mob_Movement : MonoBehaviour
 
     private void FacePlayer()
     {// turn to face player
+
+        ResetAnimator();
 
         //mobs coordinates
         float mx = transform.position.x;
@@ -271,6 +303,18 @@ public class Mob_Movement : MonoBehaviour
     public bool InAttackRange()
     {
         return inAttackRange;
+    }
+
+    public void Stun()
+    {//stun player for x duration of time
+
+        stunned = true;
+        Invoke("ResetStun", 1f);
+    }
+
+    private void ResetStun()
+    {
+        stunned = false;
     }
 
     private void OnDrawGizmosSelected()
