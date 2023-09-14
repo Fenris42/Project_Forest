@@ -14,12 +14,12 @@ public class Mob_Movement : MonoBehaviour
     private Direction direction;
     private Mob_Health health;
     private Mob_Attack mob_attack;
-    private Mob_Collision mob_collision;
     private bool inAttackRange;
     private float attackRange;
     private bool isAggro;
     private bool hold;
     private bool stunned;
+    private bool againstWall;
 
     //stats
     [SerializeField] private float moveSpeed;
@@ -37,23 +37,27 @@ public class Mob_Movement : MonoBehaviour
         health = GetComponent<Mob_Health>();
         mob_attack = GetComponent<Mob_Attack>();
         attackRange = mob_attack.GetAttackRange();
-        mob_collision = GetComponent<Mob_Collision>();
     }
 
-    
+
     void Update()
     {// Update is called once per frame
 
-        if (GetHolds() == false)
+        if (IsAggro() == false)
+        {//Do nothing
+
+        }
+        if (IsAggro() == true && GetHolds() == false)
         {//move towards player
             Movement();
         }
-        else if (GetHolds() == true && IsAggro() == true)
-        {//point towards player if aggro and unable to move
+        else if (IsAggro() == true && GetHolds() == true)
+        {//stop moving and face player
             FacePlayer();
         }
     }
 
+    // Movement ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private bool GetHolds()
     {//get movement holds
 
@@ -65,11 +69,15 @@ public class Mob_Movement : MonoBehaviour
         {//is mob alive
             hold = true;
         }
-        else if (mob_collision.OnHold() == true)
-        {//collision with player or wall occurred
-            hold = true;
-        }
         else if (stunned == true)
+        {
+            hold = true;
+        }/*
+        else if (againstWall == true)
+        {
+            hold = true;
+        }*/
+        else if (mob_attack.InAttackRange() == true)
         {
             hold = true;
         }
@@ -285,6 +293,28 @@ public class Mob_Movement : MonoBehaviour
         transform.position += (Vector3.right * moveSpeed) * Time.deltaTime;
     }
 
+
+
+    // Collision ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Wall")
+        {//mob collided with a wall
+            againstWall = true;
+        }
+        else if (collision.gameObject.tag == "Prop")
+        {//mob collided with a prop
+
+        }
+        else
+        {
+            againstWall = false;
+        }
+    }
+
+
+
+    // Utility ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private void ResetAnimator()
     {
         //return to idle animation

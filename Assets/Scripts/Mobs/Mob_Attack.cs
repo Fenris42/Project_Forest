@@ -15,7 +15,6 @@ public class Mob_Attack : MonoBehaviour
     private float timer;
     private Mob_Movement mob_movement;
     private Mob_Health mob_health;
-    private Direction direction = new Direction();
     private Projectile_Type projectile_type = new Projectile_Type();
 
     //stats
@@ -46,7 +45,7 @@ public class Mob_Attack : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        if (mob_movement.InAttackRange() == true && mob_health.Alive() == true && timer >= attackCoolDown)
+        if (InAttackRange() == true && mob_health.Alive() == true && timer >= attackCoolDown)
         {
             Attack();
             timer = 0;
@@ -56,7 +55,7 @@ public class Mob_Attack : MonoBehaviour
     private void Attack()
     {//attack based on which attack type is selected
 
-        //get which direction to attack in
+        //get which direction to attack in and play animation
         AttackDirection();
 
         //random number for weighted attacks
@@ -99,69 +98,11 @@ public class Mob_Attack : MonoBehaviour
 
     
 
-
-
     // Fighter Attacks //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private void Sword_Basic()
     {
-        //get mobs coordinates
-        float x = transform.position.x;
-        float y = transform.position.y;
+        player.GetComponent<Player_Health>().Damage(attackDamage);
 
-        //array to store all attackable objects in range
-        Collider2D[] targets = { };
-
-        //used to find cubes center point in box draw
-        float offset;
-
-        if (attackRange <= 1)
-        {//prevents range from being pushed into the mob
-            offset = 1;
-        }
-        else
-        {//correctly offsets the center point of the cube based on attack range
-            offset = (attackRange / 2) + 0.5f;
-        }
-
-
-        //set animation and coordinate offset
-        if (direction.up == true)
-        {//Up
-
-            y += attackRange;
-            targets = Physics2D.OverlapBoxAll(new Vector2(x, y + offset), new Vector2(1, attackRange), 0);
-
-        }
-        else if (direction.down == true)
-        {//Down
-
-            y -= attackRange;
-            targets = Physics2D.OverlapBoxAll(new Vector2(x, y - offset), new Vector2(1, attackRange), 0);
-
-        }
-        else if (direction.left == true)
-        {//Left
-
-            x -= attackRange;
-            targets = Physics2D.OverlapBoxAll(new Vector2(x - offset, y), new Vector2(attackRange, 1), 0);
-
-        }
-        else if (direction.right == true)
-        {//Right
-
-            x += attackRange;
-            targets = Physics2D.OverlapBoxAll(new Vector2(x + offset, y), new Vector2(attackRange, 1), 0);
-        }
-        //loop through each enemy and damage
-        foreach (Collider2D target in targets)
-        {
-            if (target.tag == "Player")
-            {//damage player
-
-                target.GetComponent<Player_Health>().Damage(attackDamage);
-            }
-
-        }
     }
 
 
@@ -209,30 +150,147 @@ public class Mob_Attack : MonoBehaviour
 
 
 
-    //  Utility functions //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    private Direction AttackDirection()
+    // Knockback ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        direction = GetComponent<Mob_Movement>().GetDirection();
+        if (collision.gameObject.tag == "Player")
+        {//player has touched the mob
+            KnockBack();
+        }
+    }
 
-        //set animation
-        if (direction.up == true)
-        {//Up
-            animator.SetTrigger("attack_up");
+    private Direction GetKnockbackDirection()
+    {
+        Direction direction = new Direction();
+
+        //mobs coordinates
+        float mx = transform.position.x;
+        float my = transform.position.y;
+
+        //players coordinates
+        float px = player.transform.position.x;
+        float py = player.transform.position.y;
+
+        //distances between objects
+        float distx = Mathf.Abs(mx - px);
+        float disty = Mathf.Abs(my - py);
+
+        if (distx > disty)
+        {//x axis
+            if (mx < px)
+            {//player on the right
+                direction.Right();
+            }
+            else if (mx > px)
+            {//player on the left
+                direction.Left();
+            }
         }
-        else if (direction.down == true)
-        {//Down
-            animator.SetTrigger("attack_down");
-        }
-        else if (direction.left == true)
-        {//Left
-            animator.SetTrigger("attack_left");
-        }
-        else if (direction.right == true)
-        {//Right
-            animator.SetTrigger("attack_right");
+        else if (disty > distx)
+        {//y axis
+            if (my > py)
+            {//player is below
+                direction.Down();
+            }
+            else if (my < py)
+            {//player is above
+                direction.Up();
+            }
         }
 
         return direction;
+    }
+
+    private void KnockBack()
+    {//damage player and knockback
+        player.GetComponent<Player_Health>().Damage(attackDamage / 2);
+        player.GetComponent<Player_Movement>().Knockback(GetKnockbackDirection());
+
+        //hold position briefly after knockback
+        gameObject.GetComponent<Mob_Movement>().Stun();
+    }
+
+
+
+    //  Utility functions //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public bool InAttackRange()
+    {//check if player is somewhere inside mobs attack area
+
+        bool inAttackRange = false;
+
+        //get mobs coordinates
+        float x = transform.position.x;
+        float y = transform.position.y;
+
+        //used to find cubes center point in box draw
+        float offset;
+
+        if (attackRange <= 1)
+        {//prevents range from being pushed into the mob
+            offset = 1;
+        }
+        else
+        {//correctly offsets the center point of the cube based on attack range
+            offset = (attackRange / 2) + 0.5f;
+        }
+
+        //get all targets in attack range
+        Collider2D[] targets = { };
+
+        if (GetDirection().up == true)
+        {//Up
+            targets = Physics2D.OverlapBoxAll(new Vector2(x, y + offset), new Vector2(1, attackRange), 0);
+        }
+        else if (GetDirection().down == true)
+        {//Down
+            targets = Physics2D.OverlapBoxAll(new Vector2(x, y - offset), new Vector2(1, attackRange), 0);
+        }
+        else if (GetDirection().left == true)
+        {//Left
+            targets = Physics2D.OverlapBoxAll(new Vector2(x - offset, y), new Vector2(attackRange, 1), 0);
+        }
+        else if (GetDirection().right == true)
+        {//Right
+            targets = Physics2D.OverlapBoxAll(new Vector2(x + offset, y), new Vector2(attackRange, 1), 0);
+        }
+
+        //loop through each enemy and damage
+        foreach (Collider2D target in targets)
+        {
+            if (target.tag == "Player")
+            {
+                inAttackRange = true;
+            }
+        }
+
+        return inAttackRange;
+    }
+    
+    private Direction GetDirection()
+    {
+        Direction direction = GetComponent<Mob_Movement>().GetDirection();
+        return direction;
+    }
+
+    private void AttackDirection()
+    {
+        //set animation
+        if (GetDirection().up == true)
+        {//Up
+            animator.SetTrigger("attack_up");
+        }
+        else if (GetDirection().down == true)
+        {//Down
+            animator.SetTrigger("attack_down");
+        }
+        else if (GetDirection().left == true)
+        {//Left
+            animator.SetTrigger("attack_left");
+        }
+        else if (GetDirection().right == true)
+        {//Right
+            animator.SetTrigger("attack_right");
+        }
     }
 
     private void SpawnProjectile()
@@ -245,18 +303,13 @@ public class Mob_Attack : MonoBehaviour
         GameObject projectile = Instantiate(projectilePrefab, new Vector3(x, y), transform.rotation);
 
         //configure instantiated object
-        projectile.GetComponent<Projectile>().Initialize(attackDamage, projectileSpeed, direction, projectile_type);
+        projectile.GetComponent<Projectile>().Initialize(attackDamage, projectileSpeed, GetDirection(), projectile_type);
 
     }
 
     public float GetAttackRange()
     {
         return attackRange;
-    }
-
-    public int GetAttackDamage()
-    {
-        return attackDamage;
     }
 
     private void OnDrawGizmosSelected()
