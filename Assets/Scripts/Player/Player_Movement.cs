@@ -183,14 +183,14 @@ public class Player_Movement : MonoBehaviour
         }
 
         //stun player for 1sec
-        Stun();
+        Stun(1f);
     }
 
-    private void Stun()
+    private void Stun(float time)
     {//stun player for x duration of time
 
         stunned = true;
-        Invoke("ResetStun", 1f);
+        Invoke("ResetStun", time);
     }
 
     private void ResetStun()

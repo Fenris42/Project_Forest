@@ -35,7 +35,7 @@ public class Projectile : MonoBehaviour
     {
         damage = Damage;
         speed = Speed;
-        direction = Direction;
+        direction = new Direction(Direction);
         type = Projectile_Type;
 
         //Set which sprite and hitbox to use

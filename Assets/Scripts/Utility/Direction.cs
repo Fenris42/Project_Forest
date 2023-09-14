@@ -18,6 +18,13 @@ public class Direction
         left = false;
         right = false;
     }
+    public Direction(Direction direction)
+    {
+        this.up = direction.up;
+        this.down = direction.down;
+        this.left = direction.left;
+        this.right = direction.right;
+    }
 
     //Set direction methods
     public void Up()

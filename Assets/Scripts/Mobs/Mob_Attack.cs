@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -16,6 +18,7 @@ public class Mob_Attack : MonoBehaviour
     private Mob_Movement mob_movement;
     private Mob_Health mob_health;
     private Projectile_Type projectile_type = new Projectile_Type();
+    private bool isAttacking;
 
     //stats
     private enum classTypes { Fighter, Archer, Wizard };
@@ -45,15 +48,21 @@ public class Mob_Attack : MonoBehaviour
 
         timer += Time.deltaTime;
 
-        if (InAttackRange() == true && mob_health.Alive() == true && timer >= attackCoolDown)
+        if (InAttackRange() == true && mob_health.Alive() == true)
         {
-            Attack();
-            timer = 0;
+            if (timer >= attackCoolDown)
+            {
+                Attack();
+                timer = 0;
+            }
         }
     }
 
     private void Attack()
     {//attack based on which attack type is selected
+
+        //freeze mobs movement while attack in progress
+        mob_movement.Stun(0.5f);
 
         //get which direction to attack in and play animation
         AttackDirection();
@@ -207,7 +216,7 @@ public class Mob_Attack : MonoBehaviour
         player.GetComponent<Player_Movement>().Knockback(GetKnockbackDirection());
 
         //hold position briefly after knockback
-        gameObject.GetComponent<Mob_Movement>().Stun();
+        gameObject.GetComponent<Mob_Movement>().Stun(1f);
     }
 
 
@@ -236,23 +245,14 @@ public class Mob_Attack : MonoBehaviour
 
         //get all targets in attack range
         Collider2D[] targets = { };
-
-        if (GetDirection().up == true)
-        {//Up
-            targets = Physics2D.OverlapBoxAll(new Vector2(x, y + offset), new Vector2(1, attackRange), 0);
-        }
-        else if (GetDirection().down == true)
-        {//Down
-            targets = Physics2D.OverlapBoxAll(new Vector2(x, y - offset), new Vector2(1, attackRange), 0);
-        }
-        else if (GetDirection().left == true)
-        {//Left
-            targets = Physics2D.OverlapBoxAll(new Vector2(x - offset, y), new Vector2(attackRange, 1), 0);
-        }
-        else if (GetDirection().right == true)
-        {//Right
-            targets = Physics2D.OverlapBoxAll(new Vector2(x + offset, y), new Vector2(attackRange, 1), 0);
-        }
+        //up
+        targets = targets.Union(Physics2D.OverlapBoxAll(new Vector2(x, y + offset), new Vector2(1, attackRange), 0)).ToArray();
+        //down
+        targets = targets.Union(Physics2D.OverlapBoxAll(new Vector2(x, y - offset), new Vector2(1, attackRange), 0)).ToArray();
+        //left
+        targets = targets.Union(Physics2D.OverlapBoxAll(new Vector2(x - offset, y), new Vector2(attackRange, 1), 0)).ToArray();
+        //right
+        targets = targets.Union(Physics2D.OverlapBoxAll(new Vector2(x + offset, y), new Vector2(attackRange, 1), 0)).ToArray();
 
         //loop through each enemy and damage
         foreach (Collider2D target in targets)

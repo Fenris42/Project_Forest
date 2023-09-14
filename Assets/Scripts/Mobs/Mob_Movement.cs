@@ -72,7 +72,8 @@ public class Mob_Movement : MonoBehaviour
         else if (stunned == true)
         {
             hold = true;
-        }/*
+        }
+        /*
         else if (againstWall == true)
         {
             hold = true;
@@ -335,11 +336,11 @@ public class Mob_Movement : MonoBehaviour
         return inAttackRange;
     }
 
-    public void Stun()
+    public void Stun(float time)
     {//stun player for x duration of time
 
         stunned = true;
-        Invoke("ResetStun", 1f);
+        Invoke("ResetStun", time);
     }
 
     private void ResetStun()

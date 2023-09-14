@@ -467,7 +467,7 @@ MonoBehaviour:
   classType: 0
   attackDamage: 10
   attackCoolDown: 3
-  attackRange: 1
+  attackRange: 5
   projectileSpeed: 30
 --- !u!1 &4966169746412991088
 GameObject:
