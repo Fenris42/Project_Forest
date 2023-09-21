@@ -246,13 +246,13 @@ public class Mob_Attack : MonoBehaviour
         //get all targets in attack range
         Collider2D[] targets = { };
         //up
-        targets = targets.Union(Physics2D.OverlapBoxAll(new Vector2(x, y + offset), new Vector2(1, attackRange), 0)).ToArray();
+        targets = targets.Union(Physics2D.OverlapBoxAll(new Vector2(x, y + offset), new Vector2(0.1f, attackRange), 0)).ToArray();
         //down
-        targets = targets.Union(Physics2D.OverlapBoxAll(new Vector2(x, y - offset), new Vector2(1, attackRange), 0)).ToArray();
+        targets = targets.Union(Physics2D.OverlapBoxAll(new Vector2(x, y - offset), new Vector2(0.1f, attackRange), 0)).ToArray();
         //left
-        targets = targets.Union(Physics2D.OverlapBoxAll(new Vector2(x - offset, y), new Vector2(attackRange, 1), 0)).ToArray();
+        targets = targets.Union(Physics2D.OverlapBoxAll(new Vector2(x - offset, y), new Vector2(attackRange, 0.1f), 0)).ToArray();
         //right
-        targets = targets.Union(Physics2D.OverlapBoxAll(new Vector2(x + offset, y), new Vector2(attackRange, 1), 0)).ToArray();
+        targets = targets.Union(Physics2D.OverlapBoxAll(new Vector2(x + offset, y), new Vector2(attackRange, 0.1f), 0)).ToArray();
 
         //loop through each enemy and damage
         foreach (Collider2D target in targets)
@@ -330,17 +330,19 @@ public class Mob_Attack : MonoBehaviour
             offset = (attackRange / 2) + 0.5f;
         }
 
-        //left
-        Gizmos.DrawWireCube(new Vector2(x - offset, y), new Vector2(attackRange, 1));
-
-        //right
-        Gizmos.DrawWireCube(new Vector2(x + offset, y), new Vector2(attackRange, 1));
-
         //up
-        Gizmos.DrawWireCube(new Vector2(x, y + offset), new Vector2(1, attackRange));
+        Gizmos.DrawWireCube(new Vector2(x, y + offset), new Vector2(0.1f, attackRange));
 
         //down
-        Gizmos.DrawWireCube(new Vector2(x, y - offset), new Vector2(1, attackRange));
+        Gizmos.DrawWireCube(new Vector2(x, y - offset), new Vector2(0.1f, attackRange));
+
+        //left
+        Gizmos.DrawWireCube(new Vector2(x - offset, y), new Vector2(attackRange, 0.1f));
+
+        //right
+        Gizmos.DrawWireCube(new Vector2(x + offset, y), new Vector2(attackRange, 0.1f));
+
+        
 
     }
 }
