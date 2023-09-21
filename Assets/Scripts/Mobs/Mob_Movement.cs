@@ -9,17 +9,20 @@ public class Mob_Movement : MonoBehaviour
     //public variables
 
     //private variables
+    [SerializeField] private GameObject target;
     private Animator animator;
     private GameObject player;
     private Direction direction;
     private Mob_Health health;
     private Mob_Attack mob_attack;
-    private bool inAttackRange;
     private float attackRange;
     private bool isAggro;
     private bool hold;
     private bool stunned;
-    private bool againstWall;
+    private GameObject upTarget;
+    private GameObject downTarget;
+    private GameObject leftTarget;
+    private GameObject rightTarget;
 
     //stats
     [SerializeField] private float moveSpeed;
@@ -37,6 +40,10 @@ public class Mob_Movement : MonoBehaviour
         health = GetComponent<Mob_Health>();
         mob_attack = GetComponent<Mob_Attack>();
         attackRange = mob_attack.GetAttackRange();
+        
+
+        //initialize targets around player
+        SetTargets();
     }
 
 
@@ -58,108 +65,27 @@ public class Mob_Movement : MonoBehaviour
     }
 
     // Movement ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    private bool GetHolds()
-    {//get movement holds
-
-        if (IsAggro() == false)
-        {//is mob aggroed
-            hold = true;
-        }
-        else if (health.Alive() == false)
-        {//is mob alive
-            hold = true;
-        }
-        else if (stunned == true)
-        {
-            hold = true;
-        }
-        /*
-        else if (againstWall == true)
-        {
-            hold = true;
-        }*/
-        else if (mob_attack.InAttackRange() == true)
-        {
-            hold = true;
-        }
-        else
-        {//no holds, mob free to move
-            hold = false;
-        }
-
-        return hold;
-    }
-
-    private bool IsAggro()
-    {//check if player has entered aggro range
-
-        //get difference in coordinates between mob and player (line and diagonal)
-        float dist = Vector2.Distance(transform.position, player.transform.position);
-        
-        if (dist < aggroRange)
-        {//player has entered aggro range
-
-            isAggro = true;
-        }
-
-        return isAggro;
-    }
-
     private void Movement()
     {//move to attack range of player
+
+        GameObject target = SelectTarget();
 
         //mobs coords
         float mx = transform.position.x;
         float my = transform.position.y;
 
-        //player coords
-        float px = player.transform.position.x;
-        float py = player.transform.position.y;
-        
-        //tile coords up/down/left/right of player
-        Vector2 upCoord = new Vector2(px, py + attackRange);
-        Vector2 downCoord = new Vector2(px, py - attackRange);
-        Vector2 leftCoord = new Vector2(px - attackRange, py);
-        Vector2 rightCoord = new Vector2(px + attackRange, py);
-
-        //distances between mob and the players up/down/left/right tile
-        float distUp = Vector2.Distance(transform.position, upCoord);
-        float distDown = Vector2.Distance(transform.position, downCoord);
-        float distLeft = Vector2.Distance(transform.position, leftCoord);
-        float distRight = Vector2.Distance(transform.position, rightCoord);
-
-        //determine what tile up/down/left/right of player is closest
-        if (distUp < distDown && distUp < distLeft && distUp < distRight)
-        {//top tile
-            px = px;
-            py = py + attackRange;
-        }
-        else if (distDown < distUp && distDown < distLeft && distDown < distRight)
-        {//down tile
-            px = px;
-            py = py - attackRange;
-        }
-        else if (distLeft < distUp && distLeft < distDown && distLeft < distRight)
-        {//left tile
-            px = px - attackRange;
-            py = py;
-        }
-        else if (distRight < distUp && distRight < distDown && distRight < distLeft)
-        {//right tile
-            px = px + attackRange;
-            py = py;
-        }
+        //target coords
+        float tx = target.transform.position.x;
+        float ty = target.transform.position.y;
 
         //distances between objects
-        float distx = Mathf.Abs(mx - px);
-        float disty = Mathf.Abs(my - py);
+        float distx = Mathf.Abs(mx - tx);
+        float disty = Mathf.Abs(my - ty);
 
         if (distx > 0.1)
         {//move left/right to match player
 
-            inAttackRange = false;
-
-            if (mx > px)
+            if (mx > tx)
             {//move left
                 MoveLeft();
             }
@@ -171,9 +97,7 @@ public class Mob_Movement : MonoBehaviour
         else if (disty > 0.1)
         {// move up/down to match player
 
-            inAttackRange = false;
-
-            if (my < py)
+            if (my < ty)
             {//move up
                 MoveUp();
             }
@@ -185,7 +109,6 @@ public class Mob_Movement : MonoBehaviour
         else
         {
             FacePlayer();
-            inAttackRange = true;
         }
     }
 
@@ -296,29 +219,138 @@ public class Mob_Movement : MonoBehaviour
 
 
 
-    // Collision ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    private void OnCollisionEnter2D(Collision2D collision)
+    // Targeting ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void SetTargets()
     {
-        if (collision.gameObject.tag == "Wall")
-        {//mob collided with a wall
-            againstWall = true;
-        }
-        else if (collision.gameObject.tag == "Prop")
-        {//mob collided with a prop
+        //target direction
+        Direction targetDirection = new Direction();
 
+        //player coords
+        float px = player.transform.position.x;
+        float py = player.transform.position.y;
+
+        //tile coords up/down/left/right of player
+        Vector3 upCoord = new Vector3(px, py + attackRange, 0);
+        Vector3 downCoord = new Vector3(px, py - attackRange, 0);
+        Vector3 leftCoord = new Vector3(px - attackRange, py, 0);
+        Vector3 rightCoord = new Vector3(px + attackRange, py, 0);
+
+        //create target objects on player
+        //up
+        upTarget = Instantiate(target, upCoord, transform.rotation, player.transform);
+        upTarget.GetComponent<Target>().SetTargetsMob(gameObject);
+        targetDirection.Up();
+        upTarget.GetComponent<Target>().SetTargetTile(targetDirection);
+
+        //down
+        downTarget = Instantiate(target, downCoord, transform.rotation, player.transform);
+        downTarget.GetComponent<Target>().SetTargetsMob(gameObject);
+        targetDirection.Down();
+        downTarget.GetComponent<Target>().SetTargetTile(targetDirection);
+
+        //left
+        leftTarget = Instantiate(target, leftCoord, transform.rotation, player.transform);
+        leftTarget.GetComponent<Target>().SetTargetsMob(gameObject);
+        targetDirection.Left();
+        leftTarget.GetComponent<Target>().SetTargetTile(targetDirection);
+
+        //right
+        rightTarget = Instantiate(target, rightCoord, transform.rotation, player.transform);
+        rightTarget.GetComponent<Target>().SetTargetsMob(gameObject);
+        targetDirection.Right();
+        rightTarget.GetComponent<Target>().SetTargetTile(targetDirection);
+    }
+
+    public void RemoveTargets()
+    {//remove all targets from player
+        Destroy(upTarget);
+        Destroy(downTarget);
+        Destroy(leftTarget);
+        Destroy(rightTarget);
+    }
+
+    private GameObject SelectTarget()
+    {//select mobs ideal attack position
+
+        //TO DO
+        //check all targets.outofbounds() for all false values and then select closets ACTIVE target
+
+        //distances between mob and the players up/down/left/right tile
+        float distUp = Vector2.Distance(transform.position, upTarget.transform.position);
+        float distDown = Vector2.Distance(transform.position, downTarget.transform.position);
+        float distLeft = Vector2.Distance(transform.position, leftTarget.transform.position);
+        float distRight = Vector2.Distance(transform.position, rightTarget.transform.position);
+        
+        //determine what tile up/down/left/right of player is closest
+        if (distUp < distDown && distUp < distLeft && distUp < distRight)
+        {//top tile
+            return upTarget;
+        }
+        else if (distDown < distUp && distDown < distLeft && distDown < distRight)
+        {//down tile
+            return downTarget;
+        }
+        else if (distLeft < distUp && distLeft < distDown && distLeft < distRight)
+        {//left tile
+            return leftTarget;
+        }
+        else if (distRight < distUp && distRight < distDown && distRight < distLeft)
+        {//right tile
+            return rightTarget;
         }
         else
         {
-            againstWall = false;
+            return null;
         }
     }
 
 
 
     // Utility ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private bool GetHolds()
+    {//get movement holds
+
+        if (IsAggro() == false)
+        {//is mob aggroed
+            hold = true;
+        }
+        else if (health.Alive() == false)
+        {//is mob alive
+            hold = true;
+        }
+        else if (stunned == true)
+        {
+            hold = true;
+        }
+        else if (mob_attack.InAttackRange() == true)
+        {
+            hold = true;
+        }
+        else
+        {//no holds, mob free to move
+            hold = false;
+        }
+
+        return hold;
+    }
+
+    private bool IsAggro()
+    {//check if player has entered aggro range
+
+        //get difference in coordinates between mob and player (line and diagonal)
+        float dist = Vector2.Distance(transform.position, player.transform.position);
+
+        if (dist < aggroRange)
+        {//player has entered aggro range
+            isAggro = true;
+        }
+
+        return isAggro;
+    }
+
     private void ResetAnimator()
-    {
-        //return to idle animation
+    {//return to idle animation
+
         animator.SetBool("walk_up", false);
         animator.SetBool("walk_down", false);
         animator.SetBool("walk_left", false);
@@ -326,14 +358,8 @@ public class Mob_Movement : MonoBehaviour
     }
 
     public Direction GetDirection()
-    {//return object for which direction player is facing
-
+    {//return object for which direction mob is facing
         return direction;
-    }
-
-    public bool InAttackRange()
-    {
-        return inAttackRange;
     }
 
     public void Stun(float time)

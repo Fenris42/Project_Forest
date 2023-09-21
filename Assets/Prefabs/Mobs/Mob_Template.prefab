@@ -434,6 +434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 626eb0d8d61224b4d8ce355e1c7fd79f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 7102563515193614411, guid: e0e97b597ea3c8148b372eea04877cbf, type: 3}
   moveSpeed: 2
   aggroRange: 5
 --- !u!114 &7637420344347323477

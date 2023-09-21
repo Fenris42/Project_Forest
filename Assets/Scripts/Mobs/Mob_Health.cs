@@ -89,6 +89,7 @@ public class Mob_Health : MonoBehaviour
         //disable components
         healthBarObject.SetActive(false);
         GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<Mob_Movement>().RemoveTargets();
 
         //loot
         loot.DropLoot("trash");

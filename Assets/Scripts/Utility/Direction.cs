@@ -58,4 +58,12 @@ public class Direction
         left = false;
         right = false;
     }
+
+    public void SelectAll()
+    {
+        up = true;
+        down = true;
+        left = true;
+        right = true;
+    }
 }
