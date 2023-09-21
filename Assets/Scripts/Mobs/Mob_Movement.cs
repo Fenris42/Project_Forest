@@ -272,30 +272,67 @@ public class Mob_Movement : MonoBehaviour
     private GameObject SelectTarget()
     {//select mobs ideal attack position
 
-        //TO DO
-        //check all targets.outofbounds() for all false values and then select closets ACTIVE target
+        //create table of targets
+        Targets[] targets = new Targets[4];
+        for (int x = 0; x < targets.Length; x++)
+        {
+            targets[x] = new Targets();
+        }
 
-        //distances between mob and the players up/down/left/right tile
-        float distUp = Vector2.Distance(transform.position, upTarget.transform.position);
-        float distDown = Vector2.Distance(transform.position, downTarget.transform.position);
-        float distLeft = Vector2.Distance(transform.position, leftTarget.transform.position);
-        float distRight = Vector2.Distance(transform.position, rightTarget.transform.position);
-        
-        //determine what tile up/down/left/right of player is closest
-        if (distUp < distDown && distUp < distLeft && distUp < distRight)
-        {//top tile
+        //up
+        targets[0].direction.Up();
+        targets[0].distance = Vector2.Distance(transform.position, upTarget.transform.position);
+        targets[0].outOfBounds = upTarget.GetComponent<Target>().OutOfBounds();
+
+        //down
+        targets[1].direction.Down();
+        targets[1].distance = Vector2.Distance(transform.position, downTarget.transform.position);
+        targets[1].outOfBounds = downTarget.GetComponent<Target>().OutOfBounds();
+
+        //left
+        targets[2].direction.Left();
+        targets[2].distance = Vector2.Distance(transform.position, leftTarget.transform.position);
+        targets[2].outOfBounds = leftTarget.GetComponent<Target>().OutOfBounds();
+
+        //right
+        targets[3].direction.Right();
+        targets[3].distance = Vector2.Distance(transform.position, rightTarget.transform.position);
+        targets[3].outOfBounds = rightTarget.GetComponent<Target>().OutOfBounds();
+
+        //determine closest in bounds target
+        Targets closestTarget = new Targets();
+        closestTarget.distance = 99; //setting a high first value for comparision sake
+
+        for(int x = 0; x < targets.Length; x++)
+        {
+            if (targets[x].outOfBounds == false)
+            {//target must be inside the room
+
+                if (targets[x].distance < closestTarget.distance)
+                {//closest target so far. save to variable
+
+                    closestTarget.direction = targets[x].direction;
+                    closestTarget.distance = targets[x].distance;
+                    closestTarget.outOfBounds = targets[x].outOfBounds;
+                }
+            }
+        }
+
+        //return the closest available target
+        if (closestTarget.direction.up == true)
+        {
             return upTarget;
         }
-        else if (distDown < distUp && distDown < distLeft && distDown < distRight)
-        {//down tile
+        else if (closestTarget.direction.down == true)
+        {
             return downTarget;
         }
-        else if (distLeft < distUp && distLeft < distDown && distLeft < distRight)
-        {//left tile
+        else if (closestTarget.direction.left == true)
+        {
             return leftTarget;
         }
-        else if (distRight < distUp && distRight < distDown && distRight < distLeft)
-        {//right tile
+        else if (closestTarget.direction.right == true)
+        {
             return rightTarget;
         }
         else

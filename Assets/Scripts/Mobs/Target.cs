@@ -9,20 +9,8 @@ public class Target : MonoBehaviour
     //private variables
     private Direction targetTile;
     private GameObject mob;
-    private bool outOfBounds;
+    [SerializeField] private bool outOfBounds;
 
-
- 
-    void Start()
-    {// Start is called before the first frame update
-
-    }
-    
-    void Update()
-    {// Update is called once per frame
-
-    }
-    
     public bool OutOfBounds()
     {
         return outOfBounds;
