@@ -7,18 +7,6 @@ public class Range_Check : MonoBehaviour
     //private variables
     private bool playerInRange = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public bool IsPlayerInRange()
     {
         return playerInRange;

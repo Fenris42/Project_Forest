@@ -27,8 +27,12 @@ public class Home_Door : MonoBehaviour
     {// Update is called once per frame
 
         CheckIfPlayerInRange();
-        PlayerInput();
-        
+
+        if (playerInOpenRange == true)
+        {
+            PlayerInput();
+        }
+                
         if (playerInEnterRange == true)
         {
             EnterDungeon();
@@ -37,7 +41,7 @@ public class Home_Door : MonoBehaviour
 
     private void PlayerInput()
     {
-        if (Input.GetKeyDown(KeyCode.E) && playerInOpenRange == true)
+        if (Input.GetKeyDown(KeyCode.E))
         {
             OpenDoor();
         }

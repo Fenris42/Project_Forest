@@ -327,7 +327,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -339,7 +339,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 1
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Server
     maxTextureSize: 2048
@@ -351,7 +351,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -440,13 +440,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TX Props Chest Opened
+      name: TX Props Chest Opened (Bottom)
       rect:
         serializedVersion: 2
         x: 96
-        y: 386
+        y: 387
         width: 32
-        height: 49
+        height: 28
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1363,6 +1363,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: TX Props Chest Opened (Top)
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 415
+        width: 32
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ac4eac3c1bdb2c489a910351c5b7fd8
+      internalID: -1796785952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1384,7 +1405,8 @@ TextureImporter:
       TX Props Brick T2: 21300154
       TX Props Brick T3: 21300156
       TX Props Chest: 21300000
-      TX Props Chest Opened: 21300040
+      TX Props Chest Opened (Bottom): 21300040
+      TX Props Chest Opened (Top): -1796785952
       TX Props Crate: 21300034
       TX Props Crate Small: 21300038
       TX Props Cube: 21300036

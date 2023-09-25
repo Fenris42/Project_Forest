@@ -50,7 +50,7 @@ TagManager:
   - name: Tilemap
     uniqueID: 4084139715
     locked: 0
-  - name: Prop
+  - name: Prop (BG)
     uniqueID: 3673797939
     locked: 0
   - name: Mob
@@ -59,7 +59,7 @@ TagManager:
   - name: Player
     uniqueID: 691004153
     locked: 0
-  - name: Foreground
+  - name: Prop (FG)
     uniqueID: 3664582637
     locked: 0
   - name: HUD
