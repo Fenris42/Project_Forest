@@ -446,7 +446,7 @@ TextureImporter:
         x: 96
         y: 387
         width: 32
-        height: 28
+        height: 27
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1368,11 +1368,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 415
+        y: 414
         width: 32
-        height: 21
+        height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1380,6 +1380,27 @@ TextureImporter:
       bones: []
       spriteID: 1ac4eac3c1bdb2c489a910351c5b7fd8
       internalID: -1796785952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TX Props Chest Opened
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 387
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e69ed44443ba38b44a88a6b5db056d3a
+      internalID: -1912041285
       vertices: []
       indices: 
       edges: []
@@ -1405,6 +1426,7 @@ TextureImporter:
       TX Props Brick T2: 21300154
       TX Props Brick T3: 21300156
       TX Props Chest: 21300000
+      TX Props Chest Opened: -1912041285
       TX Props Chest Opened (Bottom): 21300040
       TX Props Chest Opened (Top): -1796785952
       TX Props Crate: 21300034
