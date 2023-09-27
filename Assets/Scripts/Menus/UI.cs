@@ -8,7 +8,7 @@ public class UI : MonoBehaviour
 {
     //public variables
 
-    //private variables
+    //serialized variables
     [SerializeField] private SpriteRenderer closedChestSprite;
     [SerializeField] private SpriteRenderer openChestSprite;
     [SerializeField] private Image pauseIcon;
@@ -17,6 +17,7 @@ public class UI : MonoBehaviour
     [SerializeField] private GameObject menuInventory;
     [SerializeField] private TMP_Text header;
 
+    //private variables
     private bool menuOpen;
     private enum menus { none, main, inventory };
     private menus menu;
@@ -30,18 +31,44 @@ public class UI : MonoBehaviour
         
     void Update()
     {// Update is called once per frame
-        PlayerInput();
+        PlayerKeyPress();
     }
 
-    private void PlayerInput()
+    private void PlayerKeyPress()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {//toggle main menu
-            DisplayMainMenu();
+            if (menu != menus.main)
+            {
+                DisplayMainMenu();
+            }
+            else
+            {
+                CloseMenu();
+            }
         }
         else if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Tab))
         {
+            if (menu != menus.inventory)
+            {
+                DisplayInventoryMenu();
+            }
+            else
+            {
+                CloseMenu();
+            }
+        }
+    }
+
+    public void ChestClick()
+    {
+        if (menuOpen == false)
+        {
             DisplayInventoryMenu();
+        }
+        else
+        {
+            CloseMenu();
         }
     }
 
@@ -64,38 +91,22 @@ public class UI : MonoBehaviour
         UnPause();
     }
 
-
     private void DisplayMainMenu()
     {
-        if (menu != menus.main)
-        {
-            OpenMenu();
-            menuMain.SetActive(true);
-            header.text = "Main Menu";
-            menu = menus.main;
-        }
-        else
-        {
-            CloseMenu();
-        }
-
+        OpenMenu();
+        menuMain.SetActive(true);
+        header.text = "Main Menu";
+        menu = menus.main;
     }
     
-    public void DisplayInventoryMenu()
+    private void DisplayInventoryMenu()
     {
-        if (menu != menus.inventory)
-        {
-            OpenMenu();
-            menuInventory.SetActive(true);
-            header.text = "Inventory";
-            menu = menus.inventory;
-        }
-        else
-        {
-            CloseMenu();
-        }
-
+        OpenMenu();
+        menuInventory.SetActive(true);
+        header.text = "Inventory";
+        menu = menus.inventory;
     }
+
 
 
     // Utility //////////////////////////////////////////////////////////////////////////////////////////////
