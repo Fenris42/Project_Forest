@@ -9,23 +9,23 @@ public class UI : MonoBehaviour
     //public variables
 
     //private variables
-    [SerializeField] private SpriteRenderer closedChest;
-    [SerializeField] private SpriteRenderer openChest;
-    [SerializeField] private Image pause;
-    [SerializeField] private GameObject menu;
-    [SerializeField] private GameObject menu_main;
-    [SerializeField] private GameObject menu_inventory;
+    [SerializeField] private SpriteRenderer closedChestSprite;
+    [SerializeField] private SpriteRenderer openChestSprite;
+    [SerializeField] private Image pauseIcon;
+    [SerializeField] private GameObject menuWindow;
+    [SerializeField] private GameObject menuMain;
+    [SerializeField] private GameObject menuInventory;
     [SerializeField] private TMP_Text header;
 
     private bool menuOpen;
-    private bool mainMenuOpen;
-    private bool inventoryOpen;
+    private enum menus { none, main, inventory };
+    private menus menu;
 
-
+    
 
     void Start()
     {// Start is called before the first frame update
-
+        
     }
         
     void Update()
@@ -37,83 +37,98 @@ public class UI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {//toggle main menu
-            ToggleMenu();
             DisplayMainMenu();
         }
         else if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Tab))
         {
-            ToggleMenu();
-            DisplayInventory();
+            DisplayInventoryMenu();
         }
     }
 
-    public void ToggleMenu()
-    {//toggle HUD chest icon open/closed
-
-        if (menuOpen == false)
-        {//open menu
-            menuOpen = true;
-            menu.SetActive(true);
-        }
-        else if (menuOpen == true)
-        {//close menu
-            menuOpen = false;
-            menu.SetActive(false);
-        }
-
-        TogglePause();
-        ToggleChest();
+    // Menus //////////////////////////////////////////////////////////////////////////////////////////////
+    private void OpenMenu()
+    {
+        menuOpen = true;
+        menuWindow.SetActive(true);
         ResetMenu();
+        OpenChest();
+        Pause();
     }
 
-    private void ToggleChest()
+    public void CloseMenu()
     {
-        if (menuOpen == true)
-        {//toggle chest sprite
-            closedChest.enabled = false;
-            openChest.enabled = true;
-        }
-        else if (menuOpen == false)
-        {//toggle chest sprite
-            closedChest.enabled = true;
-            openChest.enabled = false;
-        }
-    }
-
-    private void TogglePause()
-    {
-        if (menuOpen == true)
-        {//pause game
-            pause.enabled = true;
-            Time.timeScale = 0;
-
-        }
-        else if (menuOpen == false)
-        {//resume game
-            pause.enabled = false;
-            Time.timeScale = 1;
-        }
-    }
-
-    public void DisplayMainMenu()
-    {
+        menuOpen = false;
+        menuWindow.SetActive(false);
         ResetMenu();
-        header.text = "Main Menu";
-        menu_main.SetActive(true);
-
+        CloseChest();
+        UnPause();
     }
 
-    public void DisplayInventory()
+
+    private void DisplayMainMenu()
     {
-        ResetMenu();
-        header.text = "Inventory";
-        menu_inventory.SetActive(true);
+        if (menu != menus.main)
+        {
+            OpenMenu();
+            menuMain.SetActive(true);
+            header.text = "Main Menu";
+            menu = menus.main;
+        }
+        else
+        {
+            CloseMenu();
+        }
+
+    }
+    
+    public void DisplayInventoryMenu()
+    {
+        if (menu != menus.inventory)
+        {
+            OpenMenu();
+            menuInventory.SetActive(true);
+            header.text = "Inventory";
+            menu = menus.inventory;
+        }
+        else
+        {
+            CloseMenu();
+        }
+
     }
 
+
+    // Utility //////////////////////////////////////////////////////////////////////////////////////////////
     private void ResetMenu()
     {//close all sub menus
         header.text = "";
-        menu_main.SetActive(false);
-        menu_inventory.SetActive(false);
+        menu = menus.none;
+
+        menuMain.SetActive(false);
+        menuInventory.SetActive(false);
     }
+
+    private void OpenChest()
+    {
+        closedChestSprite.enabled = false;
+        openChestSprite.enabled = true;
+    }
+    private void CloseChest()
+    {
+        closedChestSprite.enabled = true;
+        openChestSprite.enabled = false;
+    }
+
+    private void Pause()
+    {
+        pauseIcon.enabled = true;
+        Time.timeScale = 0;
+    }
+
+    private void UnPause()
+    {
+        pauseIcon.enabled = false;
+        Time.timeScale = 1;
+    }
+
 }

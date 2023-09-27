@@ -18,11 +18,10 @@ public class Mob_Attack : MonoBehaviour
     private Mob_Movement mob_movement;
     private Mob_Health mob_health;
     private Projectile_Type projectile_type = new Projectile_Type();
-    private bool isAttacking;
 
     //stats
     private enum classTypes { Fighter, Archer, Wizard };
-    [SerializeField] classTypes classType;
+    [SerializeField] private classTypes classType;
     [SerializeField] private int attackDamage;
     [SerializeField] private float attackCoolDown;
     [SerializeField] private float attackRange;

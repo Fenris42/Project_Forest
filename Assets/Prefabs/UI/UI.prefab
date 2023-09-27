@@ -948,12 +948,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ef56550551955b4aa519a2218c91583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closedChest: {fileID: 2639762838711139802}
-  openChest: {fileID: 1492437193653502795}
-  pause: {fileID: 7953111548534087861}
-  menu: {fileID: 4350065110482700311}
-  menu_main: {fileID: 5016794986718802917}
-  menu_inventory: {fileID: 5065628087780878757}
+  closedChestSprite: {fileID: 2639762838711139802}
+  openChestSprite: {fileID: 1492437193653502795}
+  pauseIcon: {fileID: 7953111548534087861}
+  menuWindow: {fileID: 4350065110482700311}
+  menuMain: {fileID: 5016794986718802917}
+  menuInventory: {fileID: 5065628087780878757}
   header: {fileID: 5189228189507982979}
 --- !u!1 &4250715243237520878
 GameObject:
@@ -1083,7 +1083,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7853854807227528705
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2665,7 +2665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7032724728552940812, guid: 8fe83123a8a27a84488a03d48997dc42, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleMenu
+      value: CloseMenu
       objectReference: {fileID: 0}
     - target: {fileID: 7032724728552940812, guid: 8fe83123a8a27a84488a03d48997dc42, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

@@ -3043,6 +3043,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -4.200001
       objectReference: {fileID: 0}
+    - target: {fileID: 1659485553194657482, guid: 2a0ac1bc41a1cf94281d31ea8a96749f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 2087213748082676350, guid: 2a0ac1bc41a1cf94281d31ea8a96749f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -4.200001
@@ -3109,7 +3113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4350065110482700311, guid: 2a0ac1bc41a1cf94281d31ea8a96749f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4663699663953592304, guid: 2a0ac1bc41a1cf94281d31ea8a96749f, type: 3}
       propertyPath: m_Name
