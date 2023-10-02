@@ -91,6 +91,7 @@ public class UI : MonoBehaviour
         UnPause();
     }
 
+    // Main Menu ///////////////////////////////////////////////////////////////////////////////////////////
     private void DisplayMainMenu()
     {
         OpenMenu();
@@ -98,7 +99,13 @@ public class UI : MonoBehaviour
         header.text = "Main Menu";
         menu = menus.main;
     }
-    
+
+    public void Quit()
+    {//close game
+        Application.Quit(); 
+    }
+
+    // Inventory ///////////////////////////////////////////////////////////////////////////////////////////
     private void DisplayInventoryMenu()
     {
         OpenMenu();
